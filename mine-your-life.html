@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mine Your Life</title>
+<meta name="description" content="A guided AI interview that surfaces the talents you can't see in yourself, backed by evidence from your own life.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1E1B18;
+    --charcoal-2:#2A2622;
+    --sand:#E8DCC8;
+    --sand-2:#F3ECE0;
+    --copper:#B8652A;
+    --copper-hi:#D98648;
+    --slate:#3A3631;
+    --muted:#8E8478;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Instrument Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:var(--sand-2);color:var(--slate);font-family:var(--sans);line-height:1.6;font-size:17px}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--copper)}
+
+  /* ---------- Hero ---------- */
+  .hero{background:var(--charcoal);color:var(--sand);position:relative;overflow:hidden}
+  /* the collage: lives on the right, fades into the charcoal behind the headline */
+  .hero-art{position:absolute;top:0;right:0;bottom:0;width:58%;overflow:hidden;pointer-events:none;container-type:size;z-index:0}
+  .hero-art canvas{position:absolute;right:0;top:50%;transform:translateY(-50%);width:max(100cqw,100cqh);height:auto;aspect-ratio:1/1;display:block;opacity:.85;
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 45%);mask-image:linear-gradient(to right,transparent 0,#000 45%)}
+  .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,27,24,.55),rgba(30,27,24,0) 35%)}
+  .topbar{display:flex;justify-content:space-between;align-items:center;height:72px;position:relative;z-index:1}
+  .logo{font-family:var(--serif);font-size:20px;font-weight:600;text-decoration:none;color:var(--sand)}
+  .logo i{color:var(--copper-hi);font-style:italic;font-weight:400}
+  .topbar a.small{font-size:14px;color:var(--sand);text-decoration:none;background:rgba(30,27,24,.82);padding:6px 10px;border-radius:2px}
+  .topbar a.small:hover{color:var(--copper-hi)}
+  .hero-body{padding:96px 0 120px;position:relative;z-index:1;max-width:600px}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-.02em;margin:18px 0 26px}
+  .hero h1 em{color:var(--copper-hi)}
+  .hero p.lede{font-size:clamp(18px,2.2vw,21px);color:#CFC3B0;max-width:520px}
+  .btn{display:inline-block;margin-top:36px;background:var(--copper);color:#fff;text-decoration:none;font-weight:600;padding:15px 26px;border-radius:2px;transition:background .2s}
+  .btn:hover{background:var(--copper-hi)}
+  .hero .note{display:block;margin-top:14px;font-size:14px;color:var(--muted)}
+
+  /* ---------- Problem ---------- */
+  section{padding:104px 0}
+  .problem .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
+  .problem h2,.how h2,.get h2,.privacy h2,.join h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,44px);line-height:1.12;letter-spacing:-.015em;color:var(--charcoal);margin-top:12px}
+  .problem p{margin-bottom:18px}
+  .problem p strong{color:var(--charcoal);font-weight:600}
+
+  /* ---------- How it works ---------- */
+  .how{background:var(--sand)}
+  .how .intro{max-width:620px;margin-bottom:56px}
+  .how .intro p{margin-top:16px}
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(58,54,49,.25)}
+  .phase{padding:28px 28px 32px 0;border-bottom:1px solid rgba(58,54,49,.25)}
+  .phase:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid rgba(58,54,49,.25)}
+  .phase .n{font-family:var(--serif);font-style:italic;color:var(--copper);font-size:18px}
+  .phase h3{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--charcoal);margin:6px 0 8px}
+  .phase p{font-size:15.5px}
+
+  /* ---------- What you get ---------- */
+  .get .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .get ul{list-style:none;margin-top:24px}
+  .get li{padding:14px 0;border-bottom:1px solid rgba(58,54,49,.18)}
+  .get li b{color:var(--charcoal);font-weight:600}
+  .sample{background:var(--charcoal);color:var(--sand);padding:36px;border-radius:2px;box-shadow:0 30px 60px -30px rgba(30,27,24,.55)}
+  .sample .tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal);background:var(--copper-hi);padding:4px 8px;border-radius:2px}
+  .sample h4{font-family:var(--serif);font-weight:400;font-size:26px;margin:16px 0 10px;line-height:1.2}
+  .sample p{color:#CFC3B0;font-size:15.5px}
+  .sample .receipts{margin-top:18px;border-top:1px solid rgba(232,220,200,.18);padding-top:16px;font-size:14.5px;color:#CFC3B0}
+  .sample .receipts span{display:block;padding:4px 0}
+  .sample .receipts span::before{content:"\25C6";color:var(--copper-hi);font-size:9px;margin-right:10px;vertical-align:2px}
+  .sample small{display:block;margin-top:18px;color:var(--muted);font-size:12.5px}
+
+  /* ---------- Privacy ---------- */
+  .privacy{background:var(--sand);padding:80px 0}
+  .privacy .wrap{max-width:760px}
+  .privacy p{margin-top:16px}
+
+  /* ---------- Join ---------- */
+  .join{background:var(--charcoal);color:var(--sand)}
+  .join .wrap{max-width:680px;text-align:center}
+  .join h2{color:var(--sand)}
+  .join p{color:#CFC3B0;margin-top:16px}
+  form{display:flex;gap:10px;margin:36px auto 0;max-width:520px}
+  input[type=email]{flex:1;min-width:0;padding:15px 16px;border:1px solid rgba(232,220,200,.3);background:var(--charcoal-2);color:var(--sand);font:inherit;border-radius:2px}
+  input[type=email]::placeholder{color:var(--muted)}
+  input[type=email]:focus{outline:2px solid var(--copper-hi);outline-offset:1px}
+  form button{background:var(--copper);color:#fff;border:0;font:inherit;font-weight:600;padding:15px 22px;border-radius:2px;cursor:pointer}
+  form button:hover{background:var(--copper-hi)}
+  .join small{display:block;margin-top:14px;color:var(--muted);font-size:13.5px}
+
+  footer{background:var(--charcoal);border-top:1px solid rgba(232,220,200,.12);color:var(--muted);font-size:13.5px;padding:28px 0 44px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer a{color:var(--sand);text-decoration:none}
+
+  @media (max-width:820px){
+    section{padding:72px 0}
+    .problem .grid,.get .grid{grid-template-columns:1fr;gap:32px}
+    .phases{grid-template-columns:1fr}
+    .phase,.phase:not(:nth-child(3n+1)){padding:22px 0;border-left:0}
+    .hero-body{padding:56px 0 80px}
+    .hero-art{width:100%}
+    .hero-art canvas{opacity:.3;-webkit-mask-image:none;mask-image:none}
+    form{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-art" aria-hidden="true"><canvas id="ore"></canvas></div>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="logo" href="mine-your-life.html">Mine <i>your</i> Life</a>
+      <a class="small" href="index.html">by Adaptiv Studios</a>
+    </div>
+    <div class="hero-body">
+      <div class="eyebrow">A guided self-discovery program</div>
+      <h1>You're better at things than you think. <em>You just can't see them.</em></h1>
+      <p class="lede">Mine Your Life is a guided AI interview that pulls real stories out of your life, then turns them into talents you can name, backed by evidence you lived.</p>
+      <a class="btn" href="#join">Join the beta</a>
+      <span class="note">Small cohorts. No cost during beta.</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="problem">
+    <div class="wrap grid">
+      <div>
+        <div class="eyebrow">The problem</div>
+        <h2>A resume records part of a life. It doesn't set the limits of what you can do.</h2>
+      </div>
+      <div>
+        <p>The things you're best at often feel ordinary to you, because you learned them by living: stretching a budget, calming a tense room, teaching yourself a tool at midnight, getting close to a world before anyone invited you in.</p>
+        <p>Personality tests hand you a generic label. Coaching is expensive and hard to find. <strong>Mine Your Life sits in between:</strong> a structured process where AI does the careful listening and pattern-finding, and you stay in charge of what's true.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <div class="intro">
+        <div class="eyebrow">How it works</div>
+        <h2>Six phases, from stories to a real-world test.</h2>
+        <p>Each phase is a focused conversation. You tell stories; the AI asks the follow-up questions, tracks the patterns, and labels what's proven versus what's still a hunch. You can correct anything.</p>
+      </div>
+      <div class="phases">
+        <div class="phase"><span class="n">01</span><h3>Story Mining</h3><p>Concrete moments from work and ordinary life, explored for what you actually did.</p></div>
+        <div class="phase"><span class="n">02</span><h3>Invisible Hours</h3><p>Abilities built through interest, necessity, and care, the ones a resume never shows.</p></div>
+        <div class="phase"><span class="n">03</span><h3>Evidence</h3><p>Who relied on you, what changed, where you were invited back. Receipts, not ratings.</p></div>
+        <div class="phase"><span class="n">04</span><h3>Intersections</h3><p>The combinations that make your experience distinctive, not just a list of strengths.</p></div>
+        <div class="phase"><span class="n">05</span><h3>Possibilities</h3><p>Grounded directions your evidence could grow into, and what genuinely attracts you.</p></div>
+        <div class="phase"><span class="n">06</span><h3>Personal MVP</h3><p>One small, reversible experiment to put a promising direction in contact with reality.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="get">
+    <div class="wrap grid">
+      <div>
+        <div class="eyebrow">What you walk away with</div>
+        <h2>A report built on your own evidence.</h2>
+        <ul>
+          <li><b>Your Mine Your Life Report:</b> an integrated picture of what you can do, not a pile of exercises.</li>
+          <li><b>Talents with receipts:</b> each one marked strong, emerging, or still open, and traced to the stories behind it.</li>
+          <li><b>A shortlist of directions:</b> grounded in your life, not generic career advice.</li>
+          <li><b>A first experiment:</b> a small test you can run this month, with a clear rule for what to do next.</li>
+        </ul>
+      </div>
+      <div class="sample" aria-label="Example talent from a Mine Your Life report">
+        <span class="tag">Strong</span>
+        <h4>Steady influence under pressure</h4>
+        <p>Slows conflict down, acknowledges the other side, sets a clear boundary, and moves the situation toward a workable outcome without force.</p>
+        <div class="receipts">
+          <span>Defused a hostile meeting at work, point by point</span>
+          <span>Mediated a last-minute conflict so an event could go on</span>
+          <span>Held a hard family boundary while opening a path forward</span>
+        </div>
+        <small>Illustrative example. Your report uses your stories.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy">
+    <div class="wrap">
+      <div class="eyebrow">Your story stays yours</div>
+      <h2>Built for personal material.</h2>
+      <p>You share only what you're comfortable sharing, and you can use initials or general descriptions for other people. Your stories are used to build your report, not sold or shared. You decide what's saved and can ask for it to be deleted.</p>
+    </div>
+  </section>
+
+  <section class="join" id="join">
+    <div class="wrap">
+      <div class="eyebrow">Beta</div>
+      <h2>Be one of the first to mine your life.</h2>
+      <p>We're opening small cohorts to shape the program. Join the list and we'll reach out when a spot opens.</p>
+      <!-- Replace YOUR_FORM_ID with your Formspree or Tally endpoint -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label for="email" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email" type="email" name="email" placeholder="you@example.com" required>
+        <input type="hidden" name="source" value="mine-your-life-beta">
+        <button type="submit">Join the beta</button>
+      </form>
+      <small>One email when your spot opens. No spam.</small>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Adaptiv Studios LLC</span>
+    <a href="index.html">adaptivstudios.com</a>
+  </div>
+</footer>
+
+<script>
+/* Halftone collage, 10-second seamless loop. Original piece by John Salisbury.
+   mountCollage(canvas, {palette, params}) draws it into any canvas and handles
+   resizing, offscreen pausing and reduced-motion. */
+(function(){
+const TAU=Math.PI*2, T=10, W=828;
+let C, P, cv, ctx;
+
+
+
+
+/* punchy ease-out-back; moves whose deltas sum to zero (or to a full wrap) keep the loop seamless */
+const ease=u=>{u=Math.max(0,Math.min(1,u));const c=1.7;return 1+(c+1)*Math.pow(u-1,3)+c*Math.pow(u-1,2)};
+function mov(t,moves){if(!P.slides)return 0;let v=0;for(const[st,d,dv]of moves)v+=dv*ease((t-st)/d);return v}
+
+/* ---------- shape helpers: arrays are polygons, {c:[x,y,r]} is a circle ---------- */
+function R(x,y,w,h){return [[x,y],[x+w,y],[x+w,y+h],[x,y+h]]}
+function mv(s,dx,dy){return Array.isArray(s)?s.map(([x,y])=>[x+dx,y+dy]):{c:[s.c[0]+dx,s.c[1]+dy,s.c[2]]}}
+function path(ctx,s){ctx.beginPath();
+  if(!Array.isArray(s)){ctx.arc(s.c[0],s.c[1],s.c[2],0,TAU);return}
+  ctx.moveTo(s[0][0],s[0][1]);for(let i=1;i<s.length;i++)ctx.lineTo(s[i][0],s[i][1]);ctx.closePath()}
+function bbox(s){
+  if(!Array.isArray(s)){const[x,y,r]=s.c;return{x0:x-r,y0:y-r,x1:x+r,y1:y+r,cx:x,cy:y,r:r*1.42}}
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const[x,y]of s){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}
+  return{x0,y0,x1,y1,cx:(x0+x1)/2,cy:(y0+y1)/2,r:Math.hypot(x1-x0,y1-y0)/2}}
+function lin(c0,c1,dir,c2){return(ctx,b)=>{const g=dir==='h'?ctx.createLinearGradient(b.x0,0,b.x1,0):dir==='d'?ctx.createLinearGradient(b.x0,b.y0,b.x1,b.y1):ctx.createLinearGradient(0,b.y0,0,b.y1);
+  g.addColorStop(0,c0);if(c2){g.addColorStop(.5,c1);g.addColorStop(1,c2)}else g.addColorStop(1,c1);return g}}
+function fill(ctx,s,style){path(ctx,s);ctx.fillStyle=typeof style==='function'?style(ctx,bbox(s)):style;ctx.fill()}
+
+/* Stripes slide perpendicular to themselves by a whole number of periods per loop, so frame 0 = frame 300. */
+function stripes(ctx,t,s,o){
+  const b=bbox(s);ctx.save();
+  if(o.bg)fill(ctx,s,o.bg);
+  path(ctx,s);ctx.clip();
+  const per=o.period||8,cyc=(o.cycles||0)*P.stripe;
+  let off=(cyc*t/T)%1;if(off<0)off+=1;off*=per;
+  ctx.translate(b.cx,b.cy);ctx.rotate((o.angle||0)*Math.PI/180);
+  ctx.fillStyle=o.color;const r=b.r+per,h=per*Math.max(.12,Math.min(.88,(o.ratio??.5)+P.pulse*.28*Math.sin(TAU*2*t/T+b.cx*.013+b.cy*.007)));
+  const start=-Math.ceil(r/per)*per-per;
+  for(let y=start+off;y<r;y+=per)ctx.fillRect(-r,y,2*r,h);
+  ctx.restore()}
+
+/* Halftone: dot radius pulses on a sine whose period divides the loop; phase varies by position for a ripple. */
+function dots(ctx,t,s,o){
+  const b=bbox(s);ctx.save();
+  if(o.bg)fill(ctx,s,o.bg);
+  path(ctx,s);ctx.clip();
+  ctx.fillStyle=o.color;
+  const sp=o.sp,n=o.n||1,wave=o.wave??0.022,pu=P.pulse*(o.pulse??1);
+  const a=(o.angle??45)*Math.PI/180,ca=Math.cos(a),sa=Math.sin(a),rr=b.r+sp;
+  ctx.beginPath();
+  for(let v=-rr;v<=rr;v+=sp)for(let u=-rr;u<=rr;u+=sp){
+    const x=b.cx+u*ca-v*sa,y=b.cy+u*sa+v*ca;
+    if(x<b.x0-sp||x>b.x1+sp||y<b.y0-sp||y>b.y1+sp)continue;
+    let m=1;
+    if(o.ramp){const[x0,y0,x1,y1,ra,rb]=o.ramp,dx=x1-x0,dy=y1-y0;let q=((x-x0)*dx+(y-y0)*dy)/(dx*dx+dy*dy);q=Math.max(0,Math.min(1,q));m=ra+(rb-ra)*q}
+    const rad=o.r*m*(1+pu*Math.sin(TAU*n*t/T-(x+y)*wave));
+    if(rad<.2)continue;ctx.moveTo(x+rad,y);ctx.arc(x,y,rad,0,TAU)}
+  ctx.fill();ctx.restore()}
+
+function on(t,offs){if(!P.flicker)return true;for(const[a,b]of offs)if(t>=a&&t<b)return false;return true}
+function lit(t,ons){if(!P.flicker)return false;for(const[a,b]of ons)if(t>=a&&t<b)return true;return false}
+
+let grain=null;
+function makeGrain(){const g=document.createElement('canvas');g.width=g.height=540;const x=g.getContext('2d'),d=x.createImageData(540,540);
+  let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  for(let i=0;i<d.data.length;i+=4){const v=rnd()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}
+  x.putImageData(d,0,0);return g}
+
+/* ---------------- the composition ---------------- */
+function scene(ctx,t){
+  const ph=TAU*t/T, beat=Math.floor(t/1.25)%8, inBeat=t%1.25;
+  const hit=(arr)=>P.flicker?arr[beat]:arr[0];
+  ctx.fillStyle=C.k;ctx.fillRect(0,0,W,W);
+
+  // ---- left column ----
+  stripes(ctx,t,R(0,0,118,78),{color:C.pk,period:9,ratio:.55,cycles:3});
+  fill(ctx,R(62,72,52,48),lin(hit([C.pk,C.pk,C.or,C.pk,C.cr,C.pk,C.rd,C.pk]),C.cr));
+  fill(ctx,mv([[0,118],[62,118],[0,205]],0,mov(t,[[0.6,.4,-40],[3.1,.4,40],[6.4,.35,-40],[8.6,.4,40]])),C.cr);
+  fill(ctx,R(62,150,46,182),lin(C.pk,C.rd));
+  stripes(ctx,t,R(0,262,106,72),{color:C.cr,period:9,ratio:.5,cycles:-3});
+  stripes(ctx,t,R(0,336,60,80),{color:C.cr,period:8,ratio:.4,angle:90,cycles:3});
+  stripes(ctx,t,R(62,336,42,205),{color:C.or,period:10,ratio:.5,angle:90,cycles:-4});
+  if(on(t,[[3.3,3.42],[3.55,3.9],[7.9,8.0]]))fill(ctx,R(106,412+mov(t,[[2.0,.4,46],[5.2,.4,-46]]),50,90),C.cr);
+  dots(ctx,t,R(0,478,62,140),{bg:C.or,color:C.cr,sp:6,r:2.1,ramp:[0,478,62,618,1.15,.45],n:2});
+  fill(ctx,[[40,615],[150,520],[150,615]],C.k2);
+  stripes(ctx,t,R(0,620,158,108),{color:C.or,period:8,ratio:.55,cycles:4});
+  stripes(ctx,t,R(0,690,158,38),{color:C.pk,period:8,ratio:.55,cycles:-5});
+  fill(ctx,R(156,590,30,90),hit([C.cr,C.cr,C.cr,C.pk,C.cr,C.cr,C.or,C.cr]));
+  fill(ctx,R(156,680,30,148),lin(C.or,C.am));
+  dots(ctx,t,R(186,568,70,112),{bg:C.k,color:C.or,sp:12,r:3.8,angle:0,n:3,pulse:1.2});
+  dots(ctx,t,R(186,680,70,48),{bg:hit([C.pk,C.pk,C.rd,C.pk,C.pk,C.or,C.pk,C.mg]),color:C.k,sp:6,r:1.7});
+  dots(ctx,t,R(186,728,70,100),{bg:C.cr,color:C.k,sp:10,r:2.4,angle:0,n:2});
+
+  // ---- top row ----
+  dots(ctx,t,R(262,0,153,80),{bg:C.k,color:C.or,sp:9,r:3.1,angle:0,ramp:[262,0,415,0,.55,1.15],n:2});
+  fill(ctx,R(258+mov(t,[[1.2,.45,-70],[3.7,.45,70],[7.0,.4,90],[9.0,.45,-90]]),80,157,72),lin(C.pk,C.mg,'h'));
+  stripes(ctx,t,R(415,20,128,120),{color:C.pk,period:8,ratio:.5,cycles:-3});
+  fill(ctx,R(415,20,128,9),C.rd);
+  dots(ctx,t,R(415,140,128,70),{bg:hit([C.rd,C.rd,C.pk,C.rd,C.or,C.rd,C.rd,C.am]),color:C.k,sp:7,r:2.3,n:2});
+  fill(ctx,R(498+mov(t,[[2.6,.35,-80],[5.9,.4,80]]),58,45,26),C.am);
+  if(on(t,[[5.5,5.62],[5.75,5.85],[1.9,2.0]]))fill(ctx,R(543,110+mov(t,[[4.3,.4,-60],[8.2,.4,60]]),52,100),C.cr);
+  // sun: orbits and breathes
+  const so=P.drift*.32,sx=670+so*Math.cos(ph),sy=105+so*.7*Math.sin(ph),sr=76*(1+P.pulse*.18*Math.sin(2*ph));
+  dots(ctx,t,{c:[sx,sy,sr]},{bg:lin(C.yl,C.or,'d'),color:C.rd,sp:7,r:2.6,ramp:[sx-70,sy-65,sx+70,sy+65,.25,1.1],n:3});
+  fill(ctx,R(560-so*.6*Math.sin(ph),84,112,4),C.cr);
+  stripes(ctx,t,R(720,0,40,145),{color:C.cr,period:9,ratio:.38,angle:90,cycles:4});
+  stripes(ctx,t,R(758,0,70,262),{color:C.or,period:14,ratio:.42,angle:90,cycles:-3});
+  if(on(t,[[2.1,2.22],[2.36,2.48],[7.3,7.62],[9.4,9.5]]))fill(ctx,R(740,150,88,110),lin(hit([C.or,C.or,C.pk,C.or,C.cr,C.or,C.yl,C.or]),C.rd));
+  dots(ctx,t,R(660,190,80,140),{bg:C.cr,color:C.k,sp:10,r:2.6,angle:0,n:2});
+  fill(ctx,R(740,262,88,40),hit([C.pk,C.pk,C.pk,C.or,C.pk,C.pk,C.cr,C.pk]));
+
+  // ---- middle ----
+  dots(ctx,t,R(490,215,55,40),{bg:C.cr,color:C.k,sp:5,r:1.5});
+  dots(ctx,t,R(545,215,55,40),{bg:C.am,color:C.k,sp:5,r:1.6});
+  stripes(ctx,t,R(600,215,60,40),{bg:C.k,color:C.or,period:7,angle:-45,cycles:3});
+  // grid: scrolls diagonally, cells light up on the beat
+  fill(ctx,R(490,255,170,205),C.k2);
+  ctx.save();path(ctx,R(490,255,170,205));ctx.clip();
+  const go=(((2*P.stripe*t/T)%1)+1)%1*24;
+  const cells=[[2,3],[5,1],[1,6],[4,5],[0,2],[6,7],[3,0],[5,4]];
+  if(P.flicker&&inBeat<.45){const[cx,cy]=cells[beat];fill(ctx,R(490+cx*24+go-24,255+cy*24+go-24,24,24),beat%2?C.pk:C.or)}
+  if(P.flicker&&inBeat>.6&&inBeat<.8){const[cx,cy]=cells[(beat+3)%8];fill(ctx,R(490+cx*24+go-24,255+cy*24+go-24,24,24),C.cr)}
+  ctx.strokeStyle=C.cr;ctx.globalAlpha=.75;ctx.lineWidth=1.1;ctx.beginPath();
+  for(let x=490-24+go;x<=684;x+=24){ctx.moveTo(x,255);ctx.lineTo(x,460)}
+  for(let y=255-24+go;y<=484;y+=24){ctx.moveTo(490,y);ctx.lineTo(660,y)}
+  ctx.stroke();ctx.restore();
+  fill(ctx,R(543+so*.8*Math.sin(2*ph),215,4,245),C.cr);
+  dots(ctx,t,mv([[440,325],[540,465],[440,465]],0,mov(t,[[1.6,.4,-50],[4.6,.4,50]])),{bg:C.or,color:C.yl,sp:5,r:1.5,ramp:[440,325,540,465,.4,1.2],n:2});
+  fill(ctx,R(205,415,125,90),lin(C.rd,hit([C.pk,C.pk,C.or,C.pk,C.pk,C.cr,C.pk,C.pk]),'h'));
+  stripes(ctx,t,R(105,505,335,40),{color:C.pk,period:8,ratio:.5,cycles:5});
+  stripes(ctx,t,R(440,505,100,140),{color:C.or,period:8,ratio:.5,cycles:-3});
+  if(on(t,[[4.0,4.32],[8.8,8.92]]))fill(ctx,R(440,645,100,90),hit([C.pk,C.or,C.pk,C.cr,C.pk,C.rd,C.pk,C.yl]));
+  dots(ctx,t,[[440,720],[525,828],[440,828]],{bg:C.k,color:C.cr,sp:5,r:1.4,n:3});
+  stripes(ctx,t,R(543,735,197,93),{color:C.pk,period:8,ratio:.5,cycles:-4});
+
+  // ---- big half circle: breathes ----
+  const circ={c:[812,580,272*(1+P.pulse*.12*Math.sin(2*ph+1))]};
+  fill(ctx,circ,lin(C.pk,C.or,'h',C.am));
+  ctx.save();path(ctx,circ);ctx.clip();
+  stripes(ctx,t,R(520,280,210,320),{color:C.st1,period:9,ratio:.36,angle:-55,cycles:5});
+  dots(ctx,t,R(730,280,98,320),{color:C.yl,sp:7,r:2.2,ramp:[730,0,828,0,.4,1.2],n:3});
+  ctx.restore();
+
+  // ---- bottom-right checker: rows slide one cell at a time and wrap ----
+  const row=(y,h,cellsFns,o)=>{ctx.save();path(ctx,R(540,y,288,h));ctx.clip();
+    o=((o%288)+288)%288;
+    cellsFns.forEach((f,i)=>{const x=540+i*96+o;f(x,y,h);f(x-288,y,h)});ctx.restore()};
+  row(505,60,[
+    ()=>{},
+    (x,y,h)=>dots(ctx,t,R(x+4,y,96,h),{bg:C.cr,color:C.k,sp:7,r:2.3}),
+    (x,y,h)=>dots(ctx,t,R(x,y,96,h),{bg:C.k,color:C.cr,sp:7,r:2})],
+    P.slides?96*Math.round(0)+mov(t,[[0.9,.45,-96],[5.4,.45,96]]):0);
+  row(565,80,[
+    (x,y,h)=>dots(ctx,t,R(x,y,96,h),{bg:C.rd,color:C.cr,sp:7,r:1.9,ramp:[x,y,x+96,y+h,1.2,.5]}),
+    (x,y,h)=>fill(ctx,R(x,y,96,h),C.cr),
+    (x,y,h)=>fill(ctx,R(x,y,96,h),C.or)],
+    mov(t,[[1.5,.45,96],[4.8,.45,96],[8.1,.45,96]]));
+  row(645,90,[
+    (x,y,h)=>fill(ctx,R(x,y,96,h),lin(C.rd,C.or,'h')),
+    (x,y,h)=>fill(ctx,R(x,y,96,h),C.or),
+    (x,y,h)=>{fill(ctx,R(x,y,96,h),C.cr);stripes(ctx,t,R(x+16,y,30,h),{color:C.k,period:12,ratio:.3,angle:90,cycles:-2})}],
+    mov(t,[[3.0,.45,-96],[6.3,.45,-96],[9.0,.45,-96]]));
+  dots(ctx,t,R(740,735,88,93),{bg:C.am,color:C.cr,sp:6,r:1.9,n:2});
+  fill(ctx,R(740+mov(t,[[2.2,.35,-120],[6.9,.35,120]]),440,7,125),C.pk);
+
+  // ---- large diagonal forms: big sweeps, out of phase ----
+  const sw=P.sweep,s1=sw*Math.sin(ph),s2=sw*Math.sin(ph+2.1),s3=sw*Math.sin(2*ph+4.2)*.8;
+  stripes(ctx,t,mv([[175,70],[300,70],[445,330],[445,560]],s3,-s3*.5),{bg:C.k,color:C.pk,period:7,ratio:.42,angle:58,cycles:-6});
+  fill(ctx,mv([[117,0],[258,0],[440,555],[262,565]],s1,s1*.3),lin(C.cr,C.am,'d',C.pk));
+  stripes(ctx,t,mv([[195,0],[258,0],[440,555],[335,560]],s1,s1*.3),{color:C.st2,period:8,ratio:.32,angle:71,cycles:6});
+  dots(ctx,t,mv([[117,0],[195,0],[240,220],[170,250]],s1,s1*.3),{color:C.or,sp:5,r:1.6,ramp:[117,0,200,250,.2,1.1],n:2});
+  stripes(ctx,t,mv([[258,560],[305,560],[520,828],[322,828]],s2,0),{bg:lin(C.pk,C.rd),color:C.or,period:9,ratio:.45,angle:68,cycles:-6});
+
+  // ---- translucent overlays ----
+  const d=P.drift;
+  ctx.save();ctx.globalAlpha=.85;
+  stripes(ctx,t,mv([[300,240],[470,240],[390,430]],d*Math.cos(ph),.6*d*Math.sin(2*ph)),{color:C.pk,period:6,ratio:.34,angle:-20,cycles:4});
+  ctx.globalAlpha=.9;
+  dots(ctx,t,{c:[585+.8*d*Math.cos(ph+2.4),360+.5*d*Math.sin(ph+2.4),62]},{color:C.yl,sp:6,r:1.9,ramp:[530,300,640,420,1.1,.3],n:2});
+  dots(ctx,t,{c:[120+.9*d*Math.sin(ph+1),300+1.2*d*Math.cos(ph+1),54]},{color:C.pk,sp:6,r:2,n:3});
+  ctx.restore();
+  ctx.save();ctx.globalCompositeOperation='multiply';ctx.globalAlpha=.42;
+  fill(ctx,mv([[600,555],[770,600],[660,730]],-.7*d*Math.cos(ph+1.2),.5*d*Math.sin(ph+1.2)),C.pk);
+  ctx.restore();
+  ctx.save();ctx.globalCompositeOperation='overlay';ctx.globalAlpha=.55;
+  fill(ctx,mv([[50,420],[200,375],[235,470],[85,515]],.6*d*Math.sin(ph+3.3),.4*d*Math.cos(ph+3.3)),C.cr);
+  ctx.restore();
+  // scan band: crosses the full frame once per loop, off-screen at the loop point
+  const bx=-330+(W+330)*t/T;
+  ctx.save();ctx.globalCompositeOperation='screen';ctx.globalAlpha=.5;
+  stripes(ctx,t,[[bx,0],[bx+150,0],[bx+330,W],[bx+180,W]],{color:C.cr,period:6,ratio:.3,angle:62,cycles:6});
+  ctx.restore();
+
+  // static print grain
+  if(!grain)grain=makeGrain();
+  ctx.save();ctx.globalCompositeOperation='overlay';ctx.globalAlpha=.13;ctx.drawImage(grain,0,0,W,W);ctx.restore();
+}
+
+/* glitch: horizontal slices jump sideways for a few frames on the off-beats */
+const GL=[[1.85,.1,11],[3.72,.07,23],[5.0,.13,37],[6.85,.07,41],[8.12,.1,53],[9.55,.08,67]];
+const tmp=document.createElement('canvas'),tctx=tmp.getContext('2d');
+function glitch(t){
+  if(!P.glitch)return;
+  for(const[g0,gd,seed]of GL){if(t<g0||t>=g0+gd)continue;
+    tmp.width=cv.width;tmp.height=cv.height;tctx.drawImage(cv,0,0);
+    ctx.setTransform(1,0,0,1,0,0);let r=seed*7919;const rn=()=>(r=(r*9301+49297)%233280)/233280;
+    for(let i=0;i<8;i++){const y=Math.floor(rn()*cv.height),h=Math.floor((0.008+rn()*0.06)*cv.height),dx=Math.floor((rn()-.5)*0.16*cv.width);
+      ctx.drawImage(tmp,0,y,cv.width,h,dx,y,cv.width,h)}
+  }
+}
+
+
+const PALETTES={
+  ore:{k:'#1E1B18',k2:'#2A2622',cr:'#E8DCC8',am:'#D98648',yl:'#E9BE7A',or:'#B8652A',rd:'#8C3B1E',pk:'#C4673F',mg:'#6E2C17',
+       st1:'rgba(110,44,23,.8)',st2:'rgba(196,103,63,.9)'}
+};
+window.mountCollage=function(canvas,opts){
+  opts=opts||{};
+  C=PALETTES[opts.palette]||opts.palette||PALETTES.ore;
+  P=Object.assign({stripe:3,pulse:0.5,sweep:36,drift:90,flicker:true,slides:true,glitch:true},opts.params||{});
+  cv=canvas;ctx=cv.getContext('2d');
+  function size(){const px=Math.min(1600,Math.round(cv.clientWidth*(window.devicePixelRatio||1)));if(px&&cv.width!==px){cv.width=cv.height=px}}
+  function draw(t){size();t=((t%T)+T)%T;ctx.setTransform(cv.width/W,0,0,cv.width/W,0,0);scene(ctx,t);glitch(t)}
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  let visible=true,clock=opts.start||0,last=null,raf=0;
+  function tick(now){if(last!==null)clock=(clock+(now-last)/1000)%T;last=now;draw(clock);raf=requestAnimationFrame(tick)}
+  function update(){cancelAnimationFrame(raf);last=null;
+    if(visible&&!reduce.matches&&!document.hidden)raf=requestAnimationFrame(tick);else draw(clock)}
+  if('IntersectionObserver' in window)new IntersectionObserver(e=>{visible=e[0].isIntersecting;update()}).observe(cv);
+  document.addEventListener('visibilitychange',update);
+  reduce.addEventListener&&reduce.addEventListener('change',update);
+  addEventListener('resize',()=>draw(clock));
+  update();
+};
+})();
+
+</script>
+<script>
+  /* glitch:true restores the slice glitches from the original piece */
+  mountCollage(document.getElementById('ore'),{palette:'ore',params:{glitch:false,pulse:.4}});
+</script>
+</body>
+</html>
