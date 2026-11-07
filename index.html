@@ -203,9 +203,10 @@
   .tier:hover{border-color:#4a4a4a}
   .tier.lead{border-color:rgba(255,85,0,.55)}
   .tier .top{padding:30px 28px 26px;flex:1}
-  .tier .disc{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  .tier.lead .disc{color:var(--orange)}
-  .tier h3{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:14px 0 6px;line-height:1.15}
+  .tier .kind,.review .step .kind{display:flex;align-items:center;gap:10px;color:var(--orange)}
+  .tier .kind span{font-size:15px;font-weight:500;color:#8A8A8A}
+  .review .step .kind span{font-family:var(--mono);font-size:13px;color:var(--muted)}
+  .tier h3{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:18px 0 6px;line-height:1.15}
   .tier .what{color:var(--muted);font-size:15.5px;min-height:75px}
   .tier ul{list-style:none;margin-top:20px}
   .tier li{font-size:15px;color:#CFCFCF;padding:7px 0 0 16px;position:relative}
@@ -326,19 +327,19 @@
   <section class="block dark review" id="review">
     <div class="wrap">
       <div class="head">
-        <div><div class="eyebrow">Expert-verified review</div><h2>A second look from people who've shipped it.</h2></div>
+        <div><h2>A second look from people who've shipped it.</h2></div>
         <p>AI can build your product, and AI can critique it. Neither can tell you which problems actually matter. We run your work through a review system built from our own decades of judgment, then a senior partner verifies every finding before it reaches you. It's for founders and product teams building fast, before a launch, a raise, or a submission.</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="bar"></div><div class="n">01</div><h3>Send it</h3><p>An app, a prototype, CAD, or a physical sample, plus who it's for and what's coming up next.</p></div>
-        <div class="step"><div class="bar"></div><div class="n">02</div><h3>Our system reviews it</h3><p>It checks the work against our own heuristics, standards, and case history in UX, industrial design, and human factors.</p></div>
-        <div class="step"><div class="bar"></div><div class="n">03</div><h3>A partner verifies</h3><p>A senior partner checks every finding, cuts the noise, and ranks what will actually hurt you. Nothing goes out unchecked.</p></div>
-        <div class="step"><div class="bar"></div><div class="n">04</div><h3>You get a verdict</h3><p>A ranked report with specific fixes, signed off by the partner who made the call.</p></div>
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg><span>01</span></div><h3>Send it</h3><p>An app, a prototype, CAD, or a physical sample, plus who it's for and what's coming up next.</p></div>
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/></svg><span>02</span></div><h3>Our system reviews it</h3><p>It checks the work against our own heuristics, standards, and case history in UX, industrial design, and human factors.</p></div>
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 11 2 2 4-4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>03</span></div><h3>A partner verifies</h3><p>A senior partner checks every finding, cuts the noise, and ranks what will actually hurt you. Nothing goes out unchecked.</p></div>
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg><span>04</span></div><h3>You get a verdict</h3><p>A ranked report with specific fixes, signed off by the partner who made the call.</p></div>
       </div>
       <div class="tiers">
         <article class="tier lead">
           <div class="top">
-            <div class="disc">Start here</div>
+            <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg><span>Start here</span></div>
             <h3>Readiness check</h3>
             <p class="what">One product, one flow, one question: is it ready?</p>
             <ul><li>System review plus partner verification</li><li>Ranked findings with fixes</li><li>Fee credited toward a deeper engagement</li></ul>
@@ -347,7 +348,7 @@
         </article>
         <article class="tier">
           <div class="top">
-            <div class="disc">Most complete</div>
+            <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg><span>Most complete</span></div>
             <h3>Deep audit</h3>
             <p class="what">All three disciplines on the whole product, then a working session with your team.</p>
             <ul><li>UX, industrial design &amp; human factors</li><li>Live session with the partners</li><li>Prioritized fix plan</li></ul>
@@ -356,7 +357,7 @@
         </article>
         <article class="tier">
           <div class="top">
-            <div class="disc">Ongoing</div>
+            <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg><span>Ongoing</span></div>
             <h3>Advisory</h3>
             <p class="what">A partner on call while you build, checking each release before it ships.</p>
             <ul><li>Release-by-release review</li><li>Direct line to the partners</li><li>Fix and design work when you want it</li></ul>
