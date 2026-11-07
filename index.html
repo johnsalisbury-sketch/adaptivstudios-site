@@ -196,9 +196,30 @@
   footer .meta a{color:var(--text);text-decoration:none}
   footer .meta a:hover{color:var(--orange)}
 
+  /* ---------- review offer ---------- */
+  .review .steps{margin-bottom:72px}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:4px;display:flex;flex-direction:column;transition:border-color .2s}
+  .tier:hover{border-color:#4a4a4a}
+  .tier.lead{border-color:rgba(255,85,0,.55)}
+  .tier .top{padding:30px 28px 26px;flex:1}
+  .tier .disc{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .tier.lead .disc{color:var(--orange)}
+  .tier h3{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:14px 0 6px;line-height:1.15}
+  .tier .what{color:var(--muted);font-size:15.5px;min-height:75px}
+  .tier ul{list-style:none;margin-top:20px}
+  .tier li{font-size:15px;color:#CFCFCF;padding:7px 0 0 16px;position:relative}
+  .tier li::before{content:"";position:absolute;left:0;top:19px;width:7px;height:1.5px;background:var(--orange)}
+  .tier .foot{border-top:1px solid var(--line);padding:16px 28px;font-family:var(--mono);font-size:12px;color:#BDBDBD;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .tier .foot b{font-weight:700;color:var(--text)}
+  .verdict{margin-top:56px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+  .verdict p{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);font-weight:600;line-height:1.2;max-width:680px}
+  .verdict p span{color:var(--orange)}
+
   /* ---------- responsive ---------- */
   @media (max-width:960px){
-    .services,.partners{grid-template-columns:1fr}
+    .services,.partners,.tiers{grid-template-columns:1fr}
+    .tier .what{min-height:0}
     .stages{grid-template-columns:repeat(4,1fr);row-gap:28px}
     .stages li:nth-child(5){padding-left:0;border-left:0}
     .network{grid-template-columns:1fr 1fr}
@@ -246,6 +267,7 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M11 17h9"/></svg>
     </button>
     <nav class="main" id="nav">
+      <a href="#review">Review</a>
       <a href="#services">Services</a>
       <a href="#lifecycle">Idea to launch</a>
       <a href="#network">Network</a>
@@ -287,7 +309,7 @@
       <p class="lede">AI made building fast. We make it right. Adaptiv is a senior design studio for startups and product teams, taking software and hardware from first prototype through testing, manufacturing, and launch.</p>
       <div class="cta">
         <a class="btn" href="#contact">Start a project <span aria-hidden="true">&rarr;</span></a>
-        <a class="btn ghost" href="#lifecycle">See how we cover it</a>
+        <a class="btn ghost" href="#review">Get a second look</a>
       </div>
     </div>
   </section>
@@ -300,6 +322,54 @@
       <div><b>FDA</b><span>human factors validation for Class II and III medical devices</span></div>
     </div>
   </div>
+
+  <section class="block dark review" id="review">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="eyebrow">Expert-verified review</div><h2>A second look from people who've shipped it.</h2></div>
+        <p>AI can build your product, and AI can critique it. Neither can tell you which problems actually matter. We run your work through a review system built from our own decades of judgment, then a senior partner verifies every finding before it reaches you. It's for founders and product teams building fast, before a launch, a raise, or a submission.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="bar"></div><div class="n">01</div><h3>Send it</h3><p>An app, a prototype, CAD, or a physical sample, plus who it's for and what's coming up next.</p></div>
+        <div class="step"><div class="bar"></div><div class="n">02</div><h3>Our system reviews it</h3><p>It checks the work against our own heuristics, standards, and case history in UX, industrial design, and human factors.</p></div>
+        <div class="step"><div class="bar"></div><div class="n">03</div><h3>A partner verifies</h3><p>A senior partner checks every finding, cuts the noise, and ranks what will actually hurt you. Nothing goes out unchecked.</p></div>
+        <div class="step"><div class="bar"></div><div class="n">04</div><h3>You get a verdict</h3><p>A ranked report with specific fixes, signed off by the partner who made the call.</p></div>
+      </div>
+      <div class="tiers">
+        <article class="tier lead">
+          <div class="top">
+            <div class="disc">Start here</div>
+            <h3>Readiness check</h3>
+            <p class="what">One product, one flow, one question: is it ready?</p>
+            <ul><li>System review plus partner verification</li><li>Ranked findings with fixes</li><li>Fee credited toward a deeper engagement</li></ul>
+          </div>
+          <div class="foot"><span>From <b>$2,500</b></span><span>About a week</span></div>
+        </article>
+        <article class="tier">
+          <div class="top">
+            <div class="disc">Most complete</div>
+            <h3>Deep audit</h3>
+            <p class="what">All three disciplines on the whole product, then a working session with your team.</p>
+            <ul><li>UX, industrial design &amp; human factors</li><li>Live session with the partners</li><li>Prioritized fix plan</li></ul>
+          </div>
+          <div class="foot"><span>From <b>$12,000</b></span><span>2&ndash;3 weeks</span></div>
+        </article>
+        <article class="tier">
+          <div class="top">
+            <div class="disc">Ongoing</div>
+            <h3>Advisory</h3>
+            <p class="what">A partner on call while you build, checking each release before it ships.</p>
+            <ul><li>Release-by-release review</li><li>Direct line to the partners</li><li>Fix and design work when you want it</li></ul>
+          </div>
+          <div class="foot"><span><b>Monthly</b> retainer</span><span>Cancel anytime</span></div>
+        </article>
+      </div>
+      <div class="verdict">
+        <p>Generic AI gives you an opinion. <span>We give you a verdict someone stands behind.</span></p>
+        <a class="btn" href="#contact">Request a review <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
 
   <section class="block" id="services">
     <div class="wrap">
@@ -420,7 +490,7 @@
           <div class="field"><label for="f-co">Company or project</label><input id="f-co" name="company" autocomplete="organization"></div>
           <div class="field"><label for="f-focus">Focus</label>
             <select id="f-focus" name="focus">
-              <option>AI-built software review</option>
+              <option>Expert-verified review</option>
               <option>Product &amp; UX design</option>
               <option>Industrial design &amp; manufacturing</option>
               <option>Human factors &amp; testing</option>
