@@ -241,8 +241,6 @@
   .vibe .looks .tags{margin-top:0}
   .price{background:var(--bg);border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:3px;padding:28px;display:grid;gap:16px}
   .price .lbl{margin-bottom:0}
-  .amount{font-family:var(--mono);font-weight:700;font-size:clamp(44px,5.4vw,60px);line-height:1;font-variant-numeric:tabular-nums;color:var(--text)}
-  .amount small{font-weight:400;font-size:13px;color:var(--muted);margin-left:10px;vertical-align:middle}
   .price p{color:var(--muted);font-size:15.5px}
   .price .btn{justify-content:space-between;padding:16px 20px;font-size:16px}
   .price .up{border-top:1px solid var(--line);padding-top:16px;font-size:15px}
@@ -394,12 +392,11 @@
             </div>
           </div>
 
-          <aside class="price" aria-label="Vibe Check pricing">
+          <aside class="price" aria-label="Book a Vibe Check">
             <span class="lbl">Vibe Check</span>
-            <div class="amount">$750<small>flat · USD</small></div>
             <p>Recorded review, prioritized fix list, and AI prompts to fix it yourself.</p>
             <a class="btn" id="vc-book" href="#contact">Book a review <span aria-hidden="true">&rarr;</span></a>
-            <p class="up"><b>Need it fixed, not just flagged?</b> We redesign your key screens in Figma or code, from $2,500.</p>
+            <p class="up"><b>Need it fixed, not just flagged?</b> We redesign your key screens in Figma or code.</p>
           </aside>
         </div>
 
@@ -439,7 +436,7 @@
             <p class="what">One product, one flow, one question: is it ready?</p>
             <ul><li>System review plus partner verification</li><li>Ranked findings with fixes</li><li>Fee credited toward a deeper engagement</li></ul>
           </div>
-          <div class="foot"><span>From <b>$2,500</b></span><span>About a week</span></div>
+          <div class="foot"><span>About a week</span></div>
         </article>
         <article class="tier">
           <div class="top">
@@ -448,7 +445,7 @@
             <p class="what">All three disciplines on the whole product, then a working session with your team.</p>
             <ul><li>UX, industrial design &amp; human factors</li><li>Live session with the partners</li><li>Prioritized fix plan</li></ul>
           </div>
-          <div class="foot"><span>From <b>$12,000</b></span><span>2&ndash;3 weeks</span></div>
+          <div class="foot"><span>2&ndash;3 weeks</span></div>
         </article>
         <article class="tier">
           <div class="top">
@@ -584,7 +581,7 @@
           <div class="field"><label for="f-co">Company or project</label><input id="f-co" name="company" autocomplete="organization"></div>
           <div class="field"><label for="f-focus">Focus</label>
             <select id="f-focus" name="focus">
-              <option>Vibe Check review ($750)</option>
+              <option>Vibe Check review</option>
               <option>Expert-verified review</option>
               <option>Product &amp; UX design</option>
               <option>Industrial design &amp; manufacturing</option>
@@ -628,7 +625,7 @@
   const book=document.getElementById('vc-book');
   if(STRIPE_URL){book.href=STRIPE_URL;book.target='_blank';book.rel='noopener'}
   else book.addEventListener('click',()=>{
-    document.getElementById('f-focus').value='Vibe Check review ($750)';
+    document.getElementById('f-focus').value='Vibe Check review';
     const m=document.getElementById('f-msg');
     if(!m.value.trim())m.value="App link:\nTest login (if needed):\nWho it's for:\n";
   });
