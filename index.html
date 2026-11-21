@@ -87,6 +87,16 @@
   .proof b{display:block;font-family:var(--mono);font-size:26px;font-weight:700;line-height:1.1;color:var(--text)}
   .proof span{display:block;margin-top:8px;font-size:13px;color:var(--muted);line-height:1.45}
 
+  /* ---------- starting paths ---------- */
+  .paths{padding:0}
+  section.block.vibe{padding-top:72px}
+  .path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  .path{display:flex;flex-direction:column;gap:6px;padding:22px 24px;background:var(--card);border:1px solid var(--line);border-radius:4px;text-decoration:none;transition:border-color .2s}
+  .path:hover,.path:focus-visible{border-color:var(--orange)}
+  .path b{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.25}
+  .path span{color:var(--muted);font-size:15px}
+  .path i{font-style:normal;margin-top:auto;padding-top:10px;font-family:var(--mono);font-size:12px;color:var(--orange)}
+
   /* ---------- sections ---------- */
   section.block{padding:112px 0;border-bottom:1px solid var(--line)}
   section.dark{background:var(--bg-2)}
@@ -297,6 +307,7 @@
     .network{grid-template-columns:1fr}
     .step,.step+.step{padding:0;border-left:0}
     .fields{grid-template-columns:1fr}
+    .path-grid{grid-template-columns:1fr}
     .gets li{grid-template-columns:1fr;gap:4px}
     form{padding:24px}
     footer .meta{text-align:left}
@@ -365,11 +376,22 @@
   <div class="proof">
     <div class="wrap">
       <div><b>75+ yrs</b><span>combined practice across consumer electronics, medical devices, and payments</span></div>
-      <div><b>120+</b><span>patents held by our industrial design partner</span></div>
+      <div><b>130+</b><span>patents held across our three partners</span></div>
       <div><b>IDSA Gold</b><span>Motorola Talkabout, also named an IDSA Design of the Decade</span></div>
       <div><b>FDA</b><span>human factors validation for Class II and III medical devices</span></div>
     </div>
   </div>
+
+  <nav class="paths" aria-label="Where are you starting?">
+    <div class="wrap">
+      <span class="eyebrow">Where are you starting?</span>
+      <div class="path-grid">
+        <a class="path" href="#vibe-check" data-focus="Vibe Check review"><b>Built it with AI</b><span>It works, but it feels homemade.</span><i>Vibe Check &rarr;</i></a>
+        <a class="path" href="#lifecycle" data-focus="Full product development"><b>Starting from scratch</b><span>An idea, a sketch, or a blank sheet.</span><i>Idea to launch &rarr;</i></a>
+        <a class="path" href="#services" data-focus="Industrial design &amp; manufacturing"><b>Physical or regulated product</b><span>Hardware, medical, or headed for FDA.</span><i>Hardware &amp; human factors &rarr;</i></a>
+      </div>
+    </div>
+  </nav>
 
   <section class="block vibe" id="vibe-check" aria-labelledby="vc-h">
     <div class="wrap">
@@ -546,7 +568,7 @@
             <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 4v4"/><path d="M2 8h20"/><path d="M6 4v4"/></svg></span><span class="disc">Partner</span></div>
             <h3>Product &amp; UX Design</h3>
             <div class="role">20 years of interaction design</div>
-            <p>Principal-level product designer across consumer electronics, healthcare, fintech, and payments. Led UX for a flagship TV line and an early Android phone, and designed medical diagnostic interfaces.</p>
+            <p>Principal-level product designer across consumer electronics, healthcare, fintech, and payments. Led UX for a flagship TV line and an early Android phone, and designed medical diagnostic interfaces. Named on 9+ patents.</p>
           </div>
           <div class="foot"><span>Sony · Kyocera · Intuit</span><em>Sony Presidential Award</em></div>
         </article>
@@ -635,6 +657,8 @@
     if(!m.value.trim())m.value="App link:\nTest login (if needed):\nWho it's for:\n";
   });
 
+  // starting-path cards pre-select the form's focus
+  document.querySelectorAll('.path[data-focus]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('f-focus').value=a.dataset.focus}));
   // "Request a review" pre-selects the deeper tiers
   document.getElementById('rv-book').addEventListener('click',()=>{document.getElementById('f-focus').value='Deep audit or advisory'});
 
