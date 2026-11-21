@@ -244,6 +244,8 @@
   .vibe .looks .tags{margin-top:0}
   .price{background:var(--bg);border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:3px;padding:28px;display:grid;gap:16px}
   .price .lbl{margin-bottom:0}
+  .price .amt b{display:block;font-family:var(--mono);font-size:34px;font-weight:700;line-height:1.1;color:var(--text)}
+  .price .amt span{display:block;margin-top:6px;font-family:var(--mono);font-size:12px;color:var(--muted)}
   .price p{color:var(--muted);font-size:15.5px}
   .price .btn{justify-content:space-between;padding:16px 20px;font-size:16px}
   .price .up{border-top:1px solid var(--line);padding-top:16px;font-size:15px}
@@ -395,6 +397,7 @@
 
           <aside class="price" aria-label="Book a Vibe Check">
             <span class="lbl">Vibe Check</span>
+            <div class="amt"><b>$1,500</b><span>Up to 3 key flows · credited toward a Deep audit</span></div>
             <p>Recorded review, prioritized fix list, and AI prompts to fix it yourself.</p>
             <a class="btn" id="vc-book" href="#contact">Book a review <span aria-hidden="true">&rarr;</span></a>
             <p class="up"><b>Need it fixed, not just flagged?</b> We redesign your key screens in Figma or code.</p>
