@@ -216,6 +216,8 @@
   .tier li::before{content:"";position:absolute;left:0;top:19px;width:7px;height:1.5px;background:var(--orange)}
   .tier .foot{border-top:1px solid var(--line);padding:16px 28px;font-family:var(--mono);font-size:12px;color:#BDBDBD;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .tier .foot b{font-weight:700;color:var(--text)}
+  .hw-note{margin-top:28px;font-size:15.5px;color:var(--muted)}
+  .hw-note b{color:var(--text);font-weight:600}
   .verdict{margin-top:56px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
   .verdict p{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);font-weight:600;line-height:1.2;max-width:680px}
   .verdict p span{color:var(--orange)}
@@ -313,7 +315,6 @@
     </button>
     <nav class="main" id="nav">
       <a class="offer" href="#vibe-check"><span class="dot" aria-hidden="true"></span>Vibe Check</a>
-      <a href="#review">Review</a>
       <a href="#services">Services</a>
       <a href="#lifecycle">Idea to launch</a>
       <a href="#network">Network</a>
@@ -355,7 +356,7 @@
       <p class="lede">Adaptiv is a senior design studio for startups and product teams, taking software and hardware from first prototype through testing, manufacturing, and launch.</p>
       <div class="cta">
         <a class="btn" href="#contact">Start a project <span aria-hidden="true">&rarr;</span></a>
-        <a class="btn ghost" href="#review">Get a second look</a>
+        <a class="btn ghost" href="#vibe-check">Get a second look</a>
       </div>
     </div>
   </section>
@@ -404,7 +405,7 @@
         <div class="why">
           <div>
             <span class="lbl">Who reviews it</span>
-            <p>A principal product designer with 20 years shipping for Sony, Intuit, Verifone, and Truveta, with patents and a Sony Presidential Award along the way. You get a straight answer about your product, not polite feedback.</p>
+            <p>A principal product designer with 20 years shipping for Sony, Intuit, Verifone, and an AI healthcare platform, with patents and a Sony Presidential Award along the way. You get a straight answer about your product, not polite feedback.</p>
           </div>
           <div class="faq">
             <span class="lbl">Questions</span>
@@ -433,11 +434,11 @@
         <article class="tier lead">
           <div class="top">
             <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg><span>Start here</span></div>
-            <h3>Readiness check</h3>
-            <p class="what">One product, one flow, one question: is it ready?</p>
-            <ul><li>System review plus partner verification</li><li>Ranked findings with fixes</li><li>Fee credited toward a deeper engagement</li></ul>
+            <h3>Vibe Check</h3>
+            <p class="what">One product, one question: what's making it feel unfinished, and what do you fix first?</p>
+            <ul><li>System review plus partner verification</li><li>Recorded walkthrough and ranked fixes</li><li>Fee credited toward a Deep audit</li></ul>
           </div>
-          <div class="foot"><span>About a week</span></div>
+          <div class="foot"><span>Five days</span><a href="#vibe-check" style="color:var(--orange);text-decoration:none">Details &uarr;</a></div>
         </article>
         <article class="tier">
           <div class="top">
@@ -458,9 +459,10 @@
           <div class="foot"><span><b>Monthly</b> retainer</span><span>Cancel anytime</span></div>
         </article>
       </div>
+      <p class="hw-note"><b>Building hardware?</b> We run the same check on CAD, prototypes, and physical samples, scoped to what you have.</p>
       <div class="verdict">
         <p>Generic AI gives you an opinion. <span>We give you a verdict someone stands behind.</span></p>
-        <a class="btn" href="#contact">Request a review <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn" id="rv-book" href="#contact">Request a review <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -575,15 +577,15 @@
         <h2>Show us what you're building.</h2>
         <p>Send a link, a prototype, or a short brief, at any stage. A partner reads every submission and replies with how we'd approach it and what it would cost.</p>
       </div>
-      <form id="review" action="https://formspree.io/f/moejdpor" method="POST">
+      <form id="intake" action="https://formspree.io/f/moejdpor" method="POST">
         <div class="fields">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
           <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
           <div class="field"><label for="f-co">Company or project</label><input id="f-co" name="company" autocomplete="organization"></div>
           <div class="field"><label for="f-focus">Focus</label>
             <select id="f-focus" name="focus">
-              <option>Vibe Check review</option>
-              <option>Expert-verified review</option>
+              <option value="Vibe Check review">Vibe Check (app review)</option>
+              <option value="Deep audit or advisory">Deep audit or Advisory</option>
               <option>Product &amp; UX design</option>
               <option>Industrial design &amp; manufacturing</option>
               <option>Human factors &amp; testing</option>
@@ -631,8 +633,11 @@
     if(!m.value.trim())m.value="App link:\nTest login (if needed):\nWho it's for:\n";
   });
 
-  // review form: submit to Formspree in place, fall back to a normal POST if fetch fails
-  const form=document.getElementById('review'),note=form.querySelector('.form-note'),send=form.querySelector('button[type=submit]');
+  // "Request a review" pre-selects the deeper tiers
+  document.getElementById('rv-book').addEventListener('click',()=>{document.getElementById('f-focus').value='Deep audit or advisory'});
+
+  // intake form: submit to Formspree in place, fall back to a normal POST if fetch fails
+  const form=document.getElementById('intake'),note=form.querySelector('.form-note'),send=form.querySelector('button[type=submit]');
   form.addEventListener('submit',async e=>{
     e.preventDefault();send.disabled=true;send.textContent='Sending…';
     try{
