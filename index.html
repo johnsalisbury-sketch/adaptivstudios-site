@@ -64,19 +64,6 @@
   .hero .lede{font-size:clamp(18px,2vw,21px);font-weight:300;color:#C8C8C8;max-width:560px}
   .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
   .hero .cta .btn{padding:15px 24px;font-size:16px}
-  /* technical drawing behind the headline */
-  .blueprint{position:absolute;right:-190px;top:50%;transform:translateY(-50%);width:min(680px,62vw);height:auto;z-index:0;pointer-events:none}
-  .blueprint .g{stroke:#262626;stroke-width:1}
-  .blueprint .s{stroke:#3C3C3C;stroke-width:1.4;fill:none}
-  .blueprint .d{stroke:#4A4A4A;stroke-width:1;fill:none}
-  .blueprint .o{stroke:var(--orange);stroke-width:1.4;fill:none}
-  .blueprint text{font-family:var(--mono);font-size:11px;fill:#5A5A5A}
-  .blueprint text.ot{fill:var(--orange)}
-  @media (prefers-reduced-motion:no-preference){
-    .blueprint .s,.blueprint .o{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s cubic-bezier(.4,0,.2,1) .2s forwards}
-    .blueprint .o{animation-delay:1.4s}
-    @keyframes draw{to{stroke-dashoffset:0}}
-  }
 
   /* ---------- proof strip ---------- */
   .proof{background:var(--bg);padding:8px 0 72px}
@@ -298,7 +285,6 @@
     .menu-btn{display:block}
     header.site .logo{height:26px}
     .hero .wrap{padding-top:72px;padding-bottom:72px}
-    .blueprint{opacity:.45;right:-140px;width:520px}
     section.block{padding:80px 0}
     .steps{grid-template-columns:1fr}
     .stages{grid-template-columns:1fr 1fr}
@@ -338,31 +324,6 @@
 
 <main>
   <section class="hero">
-    <svg class="blueprint" viewBox="0 0 640 560" aria-hidden="true">
-      <g class="g">
-        <path d="M0 40H640M0 120H640M0 200H640M0 280H640M0 360H640M0 440H640M0 520H640"/>
-        <path d="M40 0V560M120 0V560M200 0V560M280 0V560M360 0V560M440 0V560M520 0V560M600 0V560"/>
-      </g>
-      <!-- device body -->
-      <rect class="s" x="150" y="110" width="330" height="360" rx="34"/>
-      <rect class="s" x="182" y="142" width="266" height="220" rx="8"/>
-      <circle class="s" cx="315" cy="414" r="24"/>
-      <circle class="s" cx="315" cy="414" r="11"/>
-      <path class="s" d="M480 180h22v70h-22M150 210h-14v48h14"/>
-      <!-- dimensions -->
-      <path class="d" d="M150 500v24M480 500v24M150 512h330M150 508l-6 4 6 4M480 508l6 4-6 4"/>
-      <text x="297" y="506">84.0</text>
-      <path class="d" d="M520 110h24M520 470h24M532 110v360"/>
-      <text x="540" y="295" transform="rotate(90 540 295)">92.5</text>
-      <path class="d" d="M182 92v-14M448 92v-14M182 84h266"/>
-      <path class="d" d="M102 142h-14M102 362h-14M94 142v220"/>
-      <!-- the accent: one callout in orange -->
-      <path class="o" d="M339 414 L400 438 H560"/>
-      <circle class="o" cx="339" cy="414" r="3"/>
-      <text class="ot" x="408" y="430">TOUCH TARGET ≥ 9 MM</text>
-      <path class="o" d="M448 142 L490 74 H580"/>
-      <text class="ot" x="470" y="64">R8 · GUI BEZEL</text>
-    </svg>
     <div class="wrap">
       <h1><i>AI made it fast.</i> <i>Experts make it <span>right.</span></i></h1>
       <p class="lede">Bring us a vibe-coded prototype or just an idea. Adaptiv is a senior design studio that takes software and hardware from either one through testing, manufacturing, and launch.</p>
