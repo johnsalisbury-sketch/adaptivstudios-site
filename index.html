@@ -260,6 +260,18 @@
   nav.main a.offer{color:var(--text);display:inline-flex;align-items:center;gap:8px}
   @media (prefers-reduced-motion:reduce){.faq summary .v{transition:none}}
 
+  /* ---------- team: signature wins + together band ---------- */
+  .partner .sig{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .partner .sig b{display:block;font-family:var(--display);font-size:16px;font-weight:600;color:var(--text);line-height:1.3}
+  .partner .sig span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+  .together{margin-top:24px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--orange);border-radius:4px;padding:24px 28px}
+  .together .yrs b{display:block;font-family:var(--mono);font-size:26px;font-weight:700;line-height:1.1}
+  .together .yrs span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .together p{color:var(--muted);font-size:15.5px}
+  .together p b{color:var(--text);font-weight:600}
+  .together a.link{font-family:var(--mono);font-size:12px;color:var(--orange);text-decoration:none;white-space:nowrap}
+  @media (max-width:760px){.together{grid-template-columns:1fr;gap:14px}}
+
   /* ---------- responsive ---------- */
   @media (max-width:960px){
     .services,.partners,.tiers{grid-template-columns:1fr}
@@ -317,6 +329,7 @@
       <a href="#services">Services</a>
       <a href="#lifecycle">Idea to launch</a>
       <a href="#partners">Team</a>
+      <a href="/track-record/">Track record</a>
       <a class="btn" href="#contact">Start a project</a>
     </nav>
   </div>
@@ -508,31 +521,39 @@
       <div class="partners">
         <article class="partner">
           <div class="top">
-            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><span class="disc">Partner</span></div>
+            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg></span><span class="disc">Partner</span></div>
             <h3>Industrial Design</h3>
             <div class="role">30 years of physical product</div>
             <p>Design director across consumer electronics, mobile computing, payments, smart home, and lighting. Led design teams on three continents and took products from concept through overseas manufacturing.</p>
+            <div class="sig"><b>Built Verifone's design team</b><span>Hired the other two partners and set the design language for a $2B hardware company.</span></div>
           </div>
-          <div class="foot"><span>Motorola · HP · Kyocera</span><em>120+ patents</em></div>
+          <div class="foot"><span>Motorola · HP · Verifone</span><em>120+ patents</em></div>
         </article>
         <article class="partner">
           <div class="top">
-            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span><span class="disc">Partner</span></div>
+            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></span><span class="disc">Partner</span></div>
             <h3>Human Factors</h3>
             <div class="role">25+ years of research &amp; usability</div>
             <p>Built human factors and UX research practices for medical device and surgical product teams. Designs and moderates formative and summative studies for FDA submissions, from mobile phones to the OR.</p>
+            <div class="sig"><b>Cleared the hardware, found the bug</b><span>A two-country usability study that saved Verifone an estimated $3M.</span></div>
           </div>
           <div class="foot"><span>Alcon · Nokia · Verifone</span><em>FDA validation</em></div>
         </article>
         <article class="partner">
           <div class="top">
-            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 4v4"/><path d="M2 8h20"/><path d="M6 4v4"/></svg></span><span class="disc">Partner</span></div>
+            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg></span><span class="disc">Partner</span></div>
             <h3>Product &amp; UX Design</h3>
             <div class="role">20 years of interaction design</div>
             <p>Principal-level product designer across consumer electronics, healthcare, fintech, and payments. Led UX for a flagship TV line and an early Android phone, and designed medical diagnostic interfaces. Named on 9+ patents.</p>
+            <div class="sig"><b>Took the design language to the screen</b><span>Led Verifone's cross-department UI system, from style guides to white-label retail themes.</span></div>
           </div>
-          <div class="foot"><span>Sony · Kyocera · Intuit</span><em>Sony Presidential Award</em></div>
+          <div class="foot"><span>Sony · Verifone · Intuit</span><em>Sony Presidential Award</em></div>
         </article>
+      </div>
+      <div class="together">
+        <div class="yrs"><b>20+ yrs</b><span>working together</span></div>
+        <p><b>We've done this as one team before.</b> At Verifone, all three partners built a design practice from scratch inside a $2B hardware company, and its products were part of a $3.4B sale.</p>
+        <a class="link" href="/track-record/">See the track record →</a>
       </div>
       <div class="worked">
         <span class="lead">Our partners' work includes products for</span>

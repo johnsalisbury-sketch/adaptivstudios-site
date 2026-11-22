@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track record · Adaptiv Studios</title>
+<meta name="description" content="How the Adaptiv partners worked together at Verifone: industrial design, UX, and human factors on one team, from the device to the screen.">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!--
+  DRAFT: /track-record page for adaptivstudios.com
+  Base styles are copied from the live index.html so the page matches.
+  Page-specific additions are under "track record" at the end of the <style>.
+  Items marked VERIFY need partner sign-off before publishing.
+-->
+<style>
+  :root{
+    --bg:#1A1A1A;
+    --bg-2:#111111;
+    --card:#222222;
+    --line:#333333;
+    --line-2:#2A2A2A;
+    --orange:#FF5500;
+    --orange-hi:#FF6A1F;
+    --text:#F5F5F5;
+    --muted:#9A9A9A;
+    --sans:"Inter","Helvetica Neue",Arial,sans-serif;
+    --display:"Exo 2","Inter",sans-serif;
+    --mono:"Space Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--orange);color:var(--bg)}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+  .logo{display:block;color:var(--orange)}
+  .logo svg{display:block;height:100%;width:auto}
+  h1,h2,h3,.btn,.worked ul,.proof b{font-family:var(--display)}
+  :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(26,26,26,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  header.site .logo{height:30px}
+  nav.main{display:flex;align-items:center;gap:32px;font-size:15px}
+  nav.main a{text-decoration:none;color:var(--muted);transition:color .15s}
+  nav.main a:hover{color:var(--text)}
+  nav.main a[aria-current]{color:var(--text)}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:var(--bg);font-weight:700;font-size:15px;text-decoration:none;padding:12px 20px;border:0;border-radius:3px;cursor:pointer;font-family:inherit;transition:background .15s}
+  .btn:hover{background:var(--orange-hi)}
+  .btn.ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1px var(--line)}
+  .btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--muted)}
+  nav.main .btn{color:var(--bg)}
+  .menu-btn{display:none;background:none;border:0;color:var(--text);padding:8px;cursor:pointer}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex:none}
+  nav.main a.offer{color:var(--text);display:inline-flex;align-items:center;gap:8px}
+  @media (prefers-reduced-motion:no-preference){
+    .dot{animation:pulse 2.4s ease-out infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,85,0,.55)}70%{box-shadow:0 0 0 9px rgba(255,85,0,0)}100%{box-shadow:0 0 0 0 rgba(255,85,0,0)}}
+  }
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  .hero .wrap{position:relative;z-index:1;padding-top:120px;padding-bottom:112px}
+  .hero h1{font-weight:700;font-size:clamp(34px,6.2vw,90px);line-height:.98;letter-spacing:-.02em;margin:0 0 32px;}
+  .hero h1 span{color:var(--orange)}
+  .hero h1 i{display:block;font-style:normal;white-space:nowrap}
+  @media (max-width:400px){.hero h1{font-size:8.4vw}}
+  .hero .lede{font-size:clamp(18px,2vw,21px);font-weight:300;color:#C8C8C8;max-width:560px}
+  .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+  .hero .cta .btn{padding:15px 24px;font-size:16px}
+  .hero .eyebrow{display:block;margin-bottom:24px}
+
+  /* proof strip */
+  .proof{background:var(--bg);padding:8px 0 72px}
+  .proof .wrap>div{border-top:3px solid var(--orange)}
+  .proof .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .proof .wrap>div{padding:32px 24px 30px;border-left:1px solid var(--line)}
+  .proof .wrap>div:first-child{border-left:0;padding-left:0}
+  .proof b{display:block;font-family:var(--mono);font-size:26px;font-weight:700;line-height:1.1;color:var(--text)}
+  .proof span{display:block;margin-top:8px;font-size:13px;color:var(--muted);line-height:1.45}
+
+  /* sections */
+  section.block{padding:112px 0;border-bottom:1px solid var(--line)}
+  section.dark{background:var(--bg-2)}
+  .head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:56px}
+  h2{font-size:clamp(32px,4.4vw,54px);font-weight:700;line-height:1.04;letter-spacing:-.01em;margin-top:0}
+  h2 span{color:var(--orange)}
+  .head p{color:var(--muted);max-width:460px;margin-top:6px}
+  .head .eyebrow{display:block;margin-bottom:18px}
+
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+  .tags span{font-family:var(--mono);font-size:11.5px;color:#BDBDBD;border:1px solid var(--line);padding:4px 8px;border-radius:2px}
+
+  .services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .svc{padding:36px 32px 40px 0;border-bottom:1px solid var(--line)}
+  .svc+.svc{padding-left:32px;border-left:1px solid var(--line)}
+  .svc .kind{display:flex;align-items:center;gap:10px;color:var(--orange)}
+  .svc .kind span{font-size:15px;font-weight:500;color:#8A8A8A}
+  .svc h3{font-size:24px;font-weight:600;letter-spacing:-.01em;margin:18px 0 12px;line-height:1.15}
+  .svc p{color:var(--muted);font-size:16px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .step{padding:0 28px 0 0;position:relative}
+  .step+.step{padding-left:28px;border-left:1px solid var(--line)}
+  .step .bar{height:3px;background:var(--line);margin-bottom:26px}
+  .step:first-child .bar{background:var(--orange)}
+  .step .kind{display:flex;align-items:center;gap:10px;color:var(--orange)}
+  .step h3{font-size:21px;font-weight:600;margin:8px 0 10px}
+  .step p{color:var(--muted);font-size:15.5px}
+
+  .partners{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .partner{background:var(--card);border:1px solid var(--line);border-radius:4px;display:flex;flex-direction:column;transition:border-color .2s}
+  .partner:hover{border-color:#4a4a4a}
+  .partner .top{padding:32px 30px 28px;flex:1}
+  .partner .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+  .mono-av{width:44px;height:44px;border-radius:3px;background:rgba(255,85,0,.12);color:var(--orange);font-family:var(--mono);font-weight:700;display:grid;place-items:center;font-size:15px}
+  .partner .disc{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .partner h3{font-size:26px;font-weight:600;letter-spacing:-.015em}
+  .partner .role{color:var(--orange);font-size:15px;font-weight:500;margin:2px 0 16px}
+  .partner p{color:var(--muted);font-size:15.5px}
+  .partner .foot{border-top:1px solid var(--line);padding:16px 30px;font-family:var(--mono);font-size:12px;color:#BDBDBD;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .partner .foot em{font-style:normal;color:var(--orange)}
+
+  .verdict{margin-top:56px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+  .verdict p{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);font-weight:600;line-height:1.2;max-width:680px}
+  .verdict p span{color:var(--orange)}
+
+  .lbl{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .gets{list-style:none;border-top:1px solid var(--line)}
+  .gets li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .gets b{font-family:var(--display);font-size:18px;font-weight:600;line-height:1.3}
+  .gets span{color:var(--muted);font-size:15.5px}
+  .price{background:var(--bg);border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:3px;padding:28px;display:grid;gap:16px}
+  .price .lbl{margin-bottom:0}
+  .price .amt b{display:block;font-family:var(--mono);font-size:34px;font-weight:700;line-height:1.1;color:var(--text)}
+  .price .amt span{display:block;margin-top:6px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .price p{color:var(--muted);font-size:15.5px}
+
+  /* footer */
+  footer{background:var(--bg-2);padding:56px 0 48px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+  footer .logo{height:34px}
+  footer .meta{font-size:13.5px;color:var(--muted);line-height:1.8;text-align:right}
+
+  /* ---------- track record (page-specific) ---------- */
+  .split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:start}
+  .shot{border:1px dashed var(--line);border-radius:4px;background:var(--card);aspect-ratio:16/7;display:grid;place-items:center;text-align:center;padding:24px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.6}
+  .shot b{display:block;color:#BDBDBD;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11.5px;margin-bottom:6px}
+  .shot.tall{aspect-ratio:4/3}
+  .shots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+  .shots .shot{aspect-ratio:4/3}
+  .stack{display:grid;gap:16px}
+  .pics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+  .pic{margin:0}
+  .pic img,.pushback .pic img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:4px;border:1px solid var(--line);background:var(--card)}
+  .pic figcaption{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .photo{margin-top:56px}
+  .photo img{display:block;width:100%;height:auto;border-radius:4px;border:1px solid var(--line);background:#F2F2F2}
+  .photo figcaption{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .pushback{margin-top:56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(32px,4vw,56px);border-top:1px solid var(--line);padding-top:32px}
+  .pushback p{color:var(--muted);font-size:16px;max-width:460px}
+  .ctaband .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+  .ctaband p{color:var(--muted);margin-top:16px;max-width:460px}
+  .ctaband .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .ctaband .cta .btn{padding:15px 24px;font-size:16px}
+
+  @media (max-width:960px){
+    .services,.partners{grid-template-columns:1fr}
+    .svc,.svc+.svc{padding:32px 0;border-left:0}
+    .steps{grid-template-columns:1fr 1fr;row-gap:44px}
+    .step:nth-child(3){padding-left:0;border-left:0}
+    .head{grid-template-columns:1fr;gap:20px}
+    .proof .wrap{grid-template-columns:1fr 1fr;row-gap:28px}
+    .proof .wrap>div:nth-child(3){border-left:0;padding-left:0}
+    .split,.pushback{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    nav.main{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg-2);border-bottom:1px solid var(--line);padding:8px 24px 20px}
+    nav.main.open{display:flex}
+    nav.main a{padding:12px 0;border-bottom:1px solid var(--line-2)}
+    nav.main .btn{margin-top:14px;justify-content:center;border-bottom:0}
+    .menu-btn{display:block}
+    header.site .logo{height:26px}
+    .hero .wrap{padding-top:72px;padding-bottom:72px}
+    section.block{padding:80px 0}
+    .steps{grid-template-columns:1fr}
+    .step,.step+.step{padding:0;border-left:0}
+    .gets li{grid-template-columns:1fr;gap:4px}
+    .shots,.pics{grid-template-columns:1fr}
+    footer .meta{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="adaptiv-logo" viewBox="0 0 747.447 178.854"><path fill="#FF5500" d="M66.39 10.377 C73.27 2.477 85.6 0.887 95.05 5.237 C103.04 8.917 107.43 14.507 112.719 22.767 C128.373 47.214 139.78 65.05 146.94 76.277 C147.553 77.237 147.973 78.154 148.2 79.027 C148.327 79.509 148.144 80.021 147.74 80.317 L140.529 85.677 C140.368 85.797 140.163 85.843 139.966 85.805 C139.768 85.767 139.595 85.648 139.49 85.477 C130.476 70.737 118.916 52.43 104.81 30.557 C98.329 20.497 92.46 10.767 79.45 14.507 C72.63 16.467 71.01 24.847 74.65 30.597 C87.796 51.364 101.66 73.597 116.24 97.297 C116.333 97.447 116.349 97.633 116.282 97.799 C116.215 97.964 116.073 98.09 115.899 98.137 L107.32 100.427 C106.469 100.652 105.57 100.296 105.1 99.547 C92.42 79.194 81.25 61.304 71.59 45.877 C65.02 35.397 56.14 22.147 66.39 10.377 Z M53.322 34.924 C53.521 34.912 53.712 35.009 53.82 35.177 C56.353 39.124 57.86 43.084 58.34 47.057 C58.503 48.398 58.295 49.754 57.74 50.977 C42.246 84.91 28.989 113.757 17.969 137.517 C15.603 142.63 14.333 146.314 14.16 148.567 C13.26 160.697 26.719 170.887 37.45 162.957 C41.3 160.107 45.31 151.177 46.93 147.457 C59.156 119.337 69.44 95.62 77.78 76.307 C77.825 76.2 77.921 76.123 78.035 76.1 C78.15 76.078 78.267 76.115 78.35 76.197 C82.78 80.767 85.39 86.747 82.69 93.007 C78.103 103.66 72.753 115.854 66.64 129.587 C66.601 129.674 66.624 129.777 66.694 129.838 C66.765 129.9 66.866 129.903 66.94 129.847 C78.78 121.947 91.876 115.95 106.23 111.857 C112.15 110.17 117.259 108.764 121.559 107.637 C133.393 104.544 143.686 98.77 152.44 90.317 C163.146 79.977 167.959 67.274 166.88 52.207 C166.799 51.095 167.326 50.023 168.26 49.397 C170.18 48.124 172.5 47.53 175.219 47.617 C175.577 47.63 175.917 47.753 176.19 47.967 C179.94 50.917 178.309 62.787 177.26 67.637 C173.926 82.924 165.826 95.294 152.96 104.747 C139.059 114.967 125.52 118.707 109.06 122.627 C89.46 127.287 67.43 140.177 55.79 157.357 C52.036 162.897 49.693 166.187 48.76 167.227 C39.12 178.017 24.499 179.567 13.07 170.727 C2.24 162.357 0.66 148.147 6.43 135.777 C19.39 107.984 34.866 74.47 52.859 35.237 C52.945 35.057 53.122 34.937 53.322 34.924 Z M166.179 110.907 C167.54 110.542 168.982 111.071 169.779 112.227 C174.013 118.347 178.969 126.044 184.649 135.317 C187.089 139.304 188.729 142.66 189.57 145.387 C194.32 160.797 184.26 175.337 168.07 175.707 C152.52 176.057 143.95 161.527 136.86 149.867 C128.98 136.92 124.88 130.204 124.559 129.717 C124.412 129.5 124.383 129.223 124.483 128.978 C124.584 128.734 124.8 128.553 125.059 128.497 L134.39 126.637 C134.835 126.547 135.29 126.746 135.529 127.137 C143.716 140.364 149.833 150.09 153.88 156.317 C157.899 162.497 166.35 166.867 173.42 163.737 C181.39 160.207 180.779 149.797 176.85 143.327 C172.279 135.807 165.51 125.917 159.95 115.267 C159.649 114.692 159.627 114.012 159.89 113.417 C160.152 112.822 160.67 112.377 161.3 112.207 Z"></path><g transform="translate(18 0)"><path fill="#F5F5F5" d="M609.452 43.113 C609.574 39.255 612.8 36.225 616.658 36.346 L622.735 36.537 C626.594 36.659 629.624 39.885 629.502 43.743 L629.347 48.701 C629.225 52.559 625.999 55.589 622.141 55.468 L616.064 55.277 C612.205 55.156 609.175 51.929 609.297 48.071 Z M359.839 36.947 C363.399 36.457 369.46 35.827 372.609 37.877 C373.382 38.376 373.849 39.23 373.85 40.147 C373.91 55.494 373.983 86.994 374.07 134.647 C374.08 141.867 365.23 142.897 359.809 143.427 C354.883 143.907 348.356 144.1 340.23 144.007 C328.19 143.857 315.26 143.327 308.42 131.527 C301.38 119.397 300.76 101.907 304.01 88.347 C307.969 71.797 319.57 66.457 336.01 65.907 C342.003 65.7 348.643 66.097 355.929 67.097 C356.044 67.112 356.16 67.077 356.246 67.002 C356.332 66.927 356.381 66.82 356.38 66.707 C356.366 53.034 356.373 44.41 356.399 40.837 C356.42 37.997 357.339 37.297 359.839 36.947 Z M563.979 42.077 C566.653 41.424 569.866 41.28 573.619 41.647 C579.059 42.177 578.359 45.227 578.39 50.227 C578.423 55.867 578.436 61.164 578.429 66.117 C578.429 66.465 578.707 66.747 579.049 66.747 L595.76 66.747 C596.782 66.749 597.672 67.445 597.919 68.437 C598.86 72.237 598.78 75.747 597.679 78.967 C597.388 79.827 596.584 80.407 595.679 80.407 L578.96 80.407 L578.959 80.407 C578.637 80.407 578.375 80.665 578.369 80.987 C578.276 99.94 578.296 111.994 578.429 117.147 C578.51 120.297 579.16 124.577 581.77 126.847 C583.743 128.56 585.639 129.444 587.46 129.497 C592.013 129.617 594.463 129.674 594.809 129.667 C596.936 129.594 598.156 130.534 598.47 132.487 C599.1 136.457 599.91 143.657 594.09 143.657 C590.09 143.647 581.34 144.227 576.109 142.637 C560.95 138.037 560.65 123.167 560.7 109.637 C560.766 93.99 560.779 84.46 560.739 81.047 C560.74 80.868 560.668 80.696 560.54 80.57 C560.412 80.444 560.239 80.374 560.059 80.377 C556.006 80.41 553.419 80.454 552.299 80.507 C550.4 80.587 549.223 79.817 548.77 78.197 C548.096 75.804 547.893 73.457 548.16 71.157 C548.88 64.947 555.229 66.597 560.03 66.507 C560.353 66.502 560.614 66.241 560.619 65.917 C560.746 54.664 560.8 48.22 560.78 46.587 C560.74 44.114 561.806 42.61 563.979 42.077 Z M259.07 66.097 C272.64 65.877 285.67 68.257 289.49 83.417 C290.156 86.064 290.503 89.637 290.529 94.137 C290.663 117.477 290.68 131.817 290.58 137.157 C290.56 138.339 290.005 139.45 289.07 140.177 C285.36 143.077 278.779 143.547 274.07 143.697 C267.023 143.917 257.69 143.997 246.07 143.937 C235.369 143.877 225.529 139.567 222.69 128.567 C220.96 121.877 220.99 109.437 225.089 103.487 C230.309 95.927 240.51 95.117 249.089 95.177 C261.923 95.264 269.646 95.267 272.26 95.187 C272.598 95.177 272.869 94.901 272.88 94.557 C273.059 86.117 270.219 80.067 261.05 80.167 C255.363 80.227 245.133 80.324 230.36 80.457 C224.26 80.517 224.83 73.267 225.82 69.297 C226.26 67.544 227.84 66.64 230.559 66.587 C235.566 66.487 245.07 66.324 259.07 66.097 Z M485.58 66.847 C493.74 66.24 502.153 66.03 510.82 66.217 C532.929 66.697 540.58 79.757 541.789 100.497 C542.33 109.79 541.333 118.154 538.799 125.587 C536.466 132.414 531.976 137.544 525.33 140.977 C521.423 143.004 515.703 144.02 508.169 144.027 C502.049 144.034 495.536 143.727 488.63 143.107 C488.53 143.096 488.43 143.127 488.356 143.194 C488.281 143.261 488.239 143.357 488.239 143.457 L488.239 168.227 C488.24 169.579 487.381 170.784 486.1 171.227 C482.566 172.447 478.799 172.747 474.799 172.127 C471.806 171.66 470.306 169.83 470.299 166.637 C470.259 141.337 470.239 111.587 470.239 77.387 C470.239 68.387 478.34 67.387 485.58 66.847 Z M394.09 66.837 C403.703 66.357 415.103 66.157 428.289 66.237 C438.13 66.307 446.6 68.507 451.999 77.217 C454.579 81.377 455.869 86.357 455.869 92.157 C455.869 104.084 455.9 118.827 455.96 136.387 C455.979 140.867 452.289 142.007 448.38 142.737 C444.34 143.497 439.986 143.887 435.32 143.907 C428.54 143.94 420.373 143.89 410.82 143.757 C402.22 143.637 395.429 142.097 390.239 134.917 C385.549 128.427 385.53 117.127 387.14 109.437 C389.44 98.437 399.729 95.427 409.58 95.237 C413.333 95.164 422.573 95.23 437.299 95.437 C437.699 95.444 438.038 95.14 438.08 94.737 C438.286 92.537 438.06 90.19 437.4 87.697 C435.63 81.017 429.289 80.397 423.07 80.317 C413.969 80.204 405.503 80.27 397.669 80.517 C393.08 80.657 390.309 80.267 390.059 75.137 C389.92 72.244 390.133 70.08 390.7 68.647 C390.805 68.377 390.968 68.128 391.179 67.917 C391.866 67.257 392.836 66.897 394.09 66.837 Z M638.59 67.207 C643.056 66.467 647.406 66.244 651.64 66.537 C655.06 66.77 657.413 68.414 658.7 71.467 C664.673 85.607 671.69 102.96 679.749 123.527 C680.01 124.18 680.35 124.887 680.77 125.647 C680.804 125.705 680.868 125.739 680.936 125.735 C681.003 125.731 681.063 125.689 681.09 125.627 C685.55 114.574 692.64 96.684 702.359 71.957 C702.999 70.324 703.663 69.064 704.35 68.177 C704.91 67.458 705.75 67.01 706.66 66.947 C710.86 66.64 715.166 66.604 719.58 66.837 C720.886 66.904 721.839 67.084 722.44 67.377 C723.11 67.705 723.401 68.504 723.1 69.187 C714.479 88.847 704.636 111.744 693.57 137.877 C692.039 141.487 690.2 142.927 686.39 143.717 C682.176 144.597 678.033 144.434 673.96 143.227 C669.059 141.787 667.9 137.997 665.609 132.747 C656.52 111.897 649.4 94.097 640.799 75.457 C639.593 72.844 638.666 70.394 638.02 68.107 C637.962 67.911 637.992 67.701 638.101 67.528 C638.21 67.356 638.388 67.239 638.59 67.207 Z M623.812 66.439 C626.242 66.435 628.216 68.401 628.22 70.831 L628.339 138.911 C628.343 141.341 626.377 143.315 623.947 143.319 L614.807 143.335 C612.377 143.339 610.403 141.373 610.399 138.943 L610.28 70.863 C610.276 68.433 612.242 66.459 614.672 66.455 Z M336.429 80.187 C327.44 80.727 322.35 86.357 320.899 94.937 C319.08 105.687 318.779 129.547 335.39 129.787 C339.836 129.847 346.633 129.837 355.779 129.757 C356.045 129.757 356.26 129.538 356.26 129.267 L356.26 82.037 C356.26 81.683 356.007 81.38 355.66 81.317 C349.2 80.177 342.789 79.8 336.429 80.187 Z M488.958 80.531 C488.667 80.818 488.502 81.209 488.499 81.617 L488.26 128.277 C488.26 129.124 488.943 129.812 489.789 129.817 L506.58 129.907 C511.15 129.932 515.543 127.975 518.793 124.468 C522.043 120.961 523.884 116.191 523.91 111.207 L523.97 99.047 C524.024 88.67 516.355 80.218 506.84 80.167 L490.049 80.087 C489.641 80.084 489.248 80.244 488.958 80.531 Z M407.106 110.76 C405.238 112.453 404.182 114.758 404.169 117.167 L404.15 120.747 C404.124 125.76 408.538 129.847 414.01 129.877 L437.94 130.007 C438.072 130.007 438.179 129.9 438.179 129.767 L438.299 108.507 C438.299 108.375 438.192 108.267 438.059 108.267 L414.13 108.137 C411.5 108.123 408.974 109.066 407.106 110.76 Z M242.138 110.856 C240.364 112.583 239.365 114.929 239.36 117.377 L239.36 120.577 C239.349 125.675 243.566 129.816 248.779 129.827 L272.52 129.867 C272.774 129.867 272.98 129.661 272.98 129.407 L273.02 108.667 C273.02 108.413 272.814 108.207 272.559 108.207 L248.82 108.167 C246.316 108.162 243.913 109.129 242.138 110.856 Z"></path></g></symbol>
+</svg>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Adaptiv Studios, home"><svg viewBox="0 0 747.447 178.854" role="img"><title>adaptiv</title><use href="#adaptiv-logo"></use></svg></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M11 17h9"></path></svg>
+    </button>
+    <nav class="main" id="nav">
+      <a class="offer" href="/#vibe-check"><span class="dot" aria-hidden="true"></span>Vibe Check</a>
+      <a href="/#services">Services</a>
+      <a href="/#lifecycle">Idea to launch</a>
+      <a href="/#partners">Team</a>
+      <a href="/track-record/" aria-current="page">Track record</a>
+      <a class="btn" href="/#contact">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1><i>We've done this</i> <i>together <span>before.</span></i></h1>
+      <p class="lede">Adaptiv is new. The team isn't. At Verifone, our three partners built a design practice inside a hardware company that had never had one, and shipped payment terminals used around the world.</p>
+      <div class="cta">
+        <a class="btn" href="/#contact">Start a project <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="/#partners">Meet the partners</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="proof">
+    <div class="wrap">
+      <!-- VERIFY: ~$3M figure and wording with the human factors partner -->
+      <div><b>~$3M</b><span>saved by one human factors study that cleared the hardware</span></div>
+      <div><b>3 disciplines</b><span>industrial design, UX, and human factors working as one team</span></div>
+      <div><b>1 language</b><span>carried from the device housing to every screen in the line</span></div>
+      <div><b>$3.4B</b><span>Verifone sale in 2018, with our product family at the front of the portfolio</span></div>
+    </div>
+  </div>
+
+  <!-- ===== ORIGIN ===== -->
+  <section class="block" id="origin">
+    <div class="wrap">
+      <div class="head">
+        <div>
+<h2>A $2B hardware company with <span>no UX discipline.</span></h2></div>
+        <p>Engineers and project managers designed the terminals, and screen graphics went to whichever outside firm a regional team could find. Our industrial design partner was brought in to build a design group from scratch. He called the two people he trusted most.</p>
+      </div>
+      <div class="partners">
+        <article class="partner">
+          <div class="top">
+            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg></span><span class="disc">Partner</span></div>
+            <h3>Industrial Design</h3>
+            <div class="role">Built the team and the hardware language</div>
+            <p>Set up the design group and its process, a global design language grounded in worldwide research, and a new product brand strategy across the terminal line.</p>
+          </div>
+          <div class="foot"><span>Design director</span><em>Mobile POS</em></div>
+        </article>
+        <article class="partner">
+          <div class="top">
+            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M10 4v4"></path><path d="M2 8h20"></path><path d="M6 4v4"></path></svg></span><span class="disc">Partner</span></div>
+            <h3>Product &amp; UX Design</h3>
+            <div class="role">Carried it from the device to the screen</div>
+            <p>Led UX for payment terminals across device and web, and the cross-department UI design language: style guides, asset libraries, and a white-label framework for retailers.</p>
+          </div>
+          <div class="foot"><span>Senior interaction designer</span><em>Design language</em></div>
+        </article>
+        <article class="partner">
+          <div class="top">
+            <div class="row"><span class="mono-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></span><span class="disc">Partner</span></div>
+            <h3>Human Factors</h3>
+            <div class="role">Proved it with evidence</div>
+            <p>Brought UX practice into the product lifecycle and ran the usability and human factors studies that held up when clients and engineering pushed back.</p>
+          </div>
+          <div class="foot"><span>UX manager</span><em>Usability &amp; HF testing</em></div>
+        </article>
+      </div>
+      <figure class="photo">
+        <img src="/images/verifone-family.webp" alt="Verifone payment terminal family, from countertop and handheld units to a multilane display, sharing one hardware and UI design language" width="2000" height="850" loading="lazy">
+        <figcaption>The Verifone terminal family, with one design language from the housing to the screens.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== CASE 02: DESIGN LANGUAGE ===== -->
+  <section class="block dark" id="design-language">
+    <div class="wrap">
+      <div class="head">
+        <div>
+<h2>One design language, <span>housing to pixels.</span></h2></div>
+        <p>Industrial design already had a physical design language. We extended its principles onto every screen in the Engage terminal family, so the product looked and behaved like one thing.</p>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span>System</span></div>
+          <h3>A system, not a skin</h3>
+          <p>Style guides, asset libraries, and interaction models for both touchscreen and keypad-only hardware.</p>
+          <div class="tags"><span>Style guides</span><span>Asset libraries</span><span>Interaction models</span></div>
+        </div>
+        <div class="svc">
+          <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></svg><span>B2B</span></div>
+          <h3>Built for retailers</h3>
+          <p>A white-label framework that lets a retailer apply its own color and logo while the functional iconography stays intact.</p>
+          <div class="tags"><span>White label</span><span>Brand extension</span></div>
+        </div>
+        <div class="svc">
+          <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg><span>Tested</span></div>
+          <h3>Proven on real displays</h3>
+          <p>Legibility checked on low-end screens under measured lighting before rollout. Adopted by corporate and regional teams, including on Carbon, the flagship tablet terminal.</p>
+          <div class="tags"><span>Legibility testing</span><span>Company-wide adoption</span></div>
+        </div>
+      </div>
+      <div class="pics">
+        <figure class="pic"><img src="/images/carbon-terminal.webp" alt="Verifone Carbon tablet payment terminal with customer-facing display" loading="lazy"><figcaption>Carbon, the flagship tablet terminal.</figcaption></figure>
+        <figure class="pic"><img src="/images/white-label-framework.webp" style="object-fit:contain;background:#fff" alt="White-label UI framework shown in two retailer brand treatments, with a shared icon set" loading="lazy"><figcaption>The white-label framework: retailer color and logo, shared iconography.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 01: P400 ===== -->
+  <section class="block" id="p400">
+    <div class="wrap">
+      <div class="head">
+        <div>
+<h2>The hardware got blamed. <span>The testing found the bug.</span></h2></div>
+        <p>Verifone's largest customer in Japan reported high card-read failures on a new terminal and blamed the industrial design: the angled sidewall of the swipe track. Retooling was on the table.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div><h3>The blame</h3><p>The client believed the sidewall shape made people misalign their cards. Tooling, recertification, and the Japan launch were all at risk.</p></div>
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg></div><h3>Three weeks, no budget</h3><p>A tightly scoped study in San Diego at two counter heights, with marked cards and every swipe reviewed on video.</p></div>
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div><h3>Then Tokyo</h3><p>A repeatable protocol run with a local research partner, comparing three terminals in randomized order.</p></div>
+        <div class="step"><div class="bar"></div><div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg></div><h3>The real cause</h3><p>Failures tracked with slow card pulls, not the sidewall. The newer terminals shared a code base, so the evidence pointed to software.</p></div>
+      </div>
+      <div class="pics"><figure class="pic"><img src="/images/p400-test-lab.webp" alt="Usability test room with terminals at two counter heights and video cameras" loading="lazy"><figcaption>Test setup at two counter heights, every swipe on video.</figcaption></figure><figure class="pic"><img src="/images/p400-swipe-analysis.webp" alt="Video frame of a card swipe with alignment lines drawn over the swipe track" loading="lazy"><figcaption>Frame-by-frame swipe analysis against the sidewall.</figcaption></figure></div>
+      <div class="pushback">
+        <div>
+          <span class="lbl">The pushback</span>
+          <p>The client and Verifone engineering blamed the industrial design and called a software cause "not possible." The product team was certain it wasn't the hardware, and the data backed them up. Two weeks later, engineering confirmed it was software and fixed it.</p>
+        </div>
+        <figure class="pic"><img src="/images/p400-three-terminals.webp" alt="The three terminals compared in the Tokyo study, labeled P400, VX520 and V200c" loading="lazy"><figcaption>The three terminals compared side by side in Tokyo.</figcaption></figure>
+      </div>
+      <div class="verdict">
+        <p>About <span>$3M saved</span> in tooling, recertification, and launch delay. The terminal shipped in Japan.</p>
+        <a class="btn ghost" href="/#review">How we review →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUTCOME: SALE ===== -->
+  <!-- VERIFY with partners: wording of the team's role in the sale. Sources: Francisco Partners press release (Apr 9, 2018); close announced Aug 20, 2018. -->
+  <section class="block dark" id="outcome">
+    <div class="wrap">
+      <div class="head">
+        <div><h2>The work that <span>closed the deal.</span></h2></div>
+        <p>In 2018, private equity firm Francisco Partners agreed to take Verifone private for about $3.4 billion, a 54% premium to its share price. The buyer pointed to the company's products and technology and its shift from selling terminals to selling payment solutions.</p>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M12 18h.01"></path></svg><span>Products</span></div>
+          <h3>The new product family</h3>
+          <p>The Engage terminals and Carbon, the flagship tablet terminal, were the face of the portfolio the buyer was paying for, and this team designed them.</p>
+        </div>
+        <div class="svc">
+          <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"></path><path d="m2 17 10 5 10-5"></path><path d="m2 12 10 5 10-5"></path></svg><span>Platform</span></div>
+          <h3>Hardware to solutions</h3>
+          <p>A shared design language across hardware and software made a line of terminals look and behave like one platform, which was the story the company was selling.</p>
+        </div>
+        <div class="svc">
+          <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>Risk</span></div>
+          <h3>Launches that held</h3>
+          <p>Evidence-based human factors kept products on schedule, like the Japan launch that went ahead without retooling.</p>
+        </div>
+      </div>
+      <div class="verdict">
+        <p>A design team built from scratch, and within a few years its products were <span>part of a $3.4B exit.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT IT MEANS ===== -->
+  <section class="block ctaband" id="for-you">
+    <div class="wrap">
+      <div>
+        <h2>The same team, <span>at startup speed.</span></h2>
+        <p>One discipline guesses from its own corner. We cover hardware, software, and research together, now with our own AI review system and a partner checking every finding.</p>
+      </div>
+      <div class="cta">
+        <a class="btn" href="/#contact">Show us what you're building <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="/#vibe-check">Get a second look</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Adaptiv Studios, home"><svg viewBox="0 0 747.447 178.854" role="img"><title>adaptiv</title><use href="#adaptiv-logo"></use></svg></a>
+    <div class="meta">
+      © 2026 Adaptiv Studios LLC
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded',false)}));
+</script>
+
+</body>
+</html>
