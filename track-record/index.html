@@ -159,6 +159,12 @@
   .shots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
   .shots .shot{aspect-ratio:4/3}
   .stack{display:grid;gap:16px}
+  .history{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid var(--orange);margin-top:24px}
+  .history>div{padding:26px 24px 4px;border-left:1px solid var(--line)}
+  .history>div:first-child{border-left:0;padding-left:0}
+  .history b{display:block;font-family:var(--display);font-size:20px;font-weight:600;margin-bottom:8px}
+  .history p{color:var(--muted);font-size:15px}
+  .history .lbl{margin-bottom:6px}
   .pics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
   .pic{margin:0}
   .pic img,.pushback .pic img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:4px;border:1px solid var(--line);background:var(--card)}
@@ -181,7 +187,8 @@
     .head{grid-template-columns:1fr;gap:20px}
     .proof .wrap{grid-template-columns:1fr 1fr;row-gap:28px}
     .proof .wrap>div:nth-child(3){border-left:0;padding-left:0}
-    .split,.pushback{grid-template-columns:1fr}
+    .split,.pushback,.history{grid-template-columns:1fr}
+    .history>div{border-left:0;padding-left:0}
   }
   @media (max-width:760px){
     nav.main{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg-2);border-bottom:1px solid var(--line);padding:8px 24px 20px}
@@ -227,7 +234,7 @@
   <section class="hero">
     <div class="wrap">
       <h1><i>We've done this</i> <i>together <span>before.</span></i></h1>
-      <p class="lede">Adaptiv is new. The team isn't. At Verifone, our three partners built a design practice inside a hardware company that had never had one, and shipped payment terminals used around the world.</p>
+      <p class="lede">Adaptiv is new. The team isn't. Our partners have worked together for twenty years, from mobile phones at Kyocera to medical devices. At Verifone, all three built a design practice inside a hardware company that had never had one.</p>
       <div class="cta">
         <a class="btn" href="/#contact">Start a project <span aria-hidden="true">→</span></a>
         <a class="btn ghost" href="/#partners">Meet the partners</a>
@@ -241,7 +248,7 @@
       <div><b>~$3M</b><span>saved by one human factors study that cleared the hardware</span></div>
       <div><b>3 disciplines</b><span>industrial design, UX, and human factors working as one team</span></div>
       <div><b>1 language</b><span>carried from the device housing to every screen in the line</span></div>
-      <div><b>$3.4B</b><span>Verifone sale in 2018, with our product family at the front of the portfolio</span></div>
+      <div><b>$3.4B</b><span>Verifone sale in 2018. Our work was part of the products and story behind it.</span></div>
     </div>
   </div>
 
@@ -281,6 +288,11 @@
           </div>
           <div class="foot"><span>UX manager</span><em>Usability &amp; HF testing</em></div>
         </article>
+      </div>
+      <div class="history">
+        <div><span class="lbl">Kyocera</span><b>Mobile phones</b><p>Where the partners first worked together: hardware, UX, and research on handsets for North American carriers.</p></div>
+        <div><span class="lbl">Verifone</span><b>Payment terminals</b><p>All three partners on one team, building a design practice from a standing start.</p></div>
+        <div><span class="lbl">MPE</span><b>Medical devices</b><p>Human factors and UX under FDA design controls, taking products from prototype through review.</p></div>
       </div>
       <figure class="photo">
         <img src="/images/verifone-family.webp" alt="Verifone payment terminal family, from countertop and handheld units to a multilane display, sharing one hardware and UI design language" width="2000" height="850" loading="lazy">
@@ -341,8 +353,8 @@
       <div class="pics"><figure class="pic"><img src="/images/p400-test-lab.webp" alt="Usability test room with terminals at two counter heights and video cameras" loading="lazy"><figcaption>Test setup at two counter heights, every swipe on video.</figcaption></figure><figure class="pic"><img src="/images/p400-swipe-analysis.webp" alt="Video frame of a card swipe with alignment lines drawn over the swipe track" loading="lazy"><figcaption>Frame-by-frame swipe analysis against the sidewall.</figcaption></figure></div>
       <div class="pushback">
         <div>
-          <span class="lbl">The pushback</span>
-          <p>The client and Verifone engineering blamed the industrial design and called a software cause "not possible." The product team was certain it wasn't the hardware, and the data backed them up. Two weeks later, engineering confirmed it was software and fixed it.</p>
+          <span class="lbl">Evidence over assumptions</span>
+          <p>The working assumption, at the client and inside Verifone, was that the hardware was at fault, and a software cause seemed unlikely. The product team held that it wasn't the hardware, and the data backed them up. Once engineering had the evidence, they traced the cause to software within two weeks and shipped a fix.</p>
         </div>
         <figure class="pic"><img src="/images/p400-three-terminals.webp" alt="The three terminals compared in the Tokyo study, labeled P400, VX520 and V200c" loading="lazy"><figcaption>The three terminals compared side by side in Tokyo.</figcaption></figure>
       </div>
@@ -358,19 +370,19 @@
   <section class="block dark" id="outcome">
     <div class="wrap">
       <div class="head">
-        <div><h2>The work that <span>closed the deal.</span></h2></div>
+        <div><h2>The work behind <span>the sale.</span></h2></div>
         <p>In 2018, private equity firm Francisco Partners agreed to take Verifone private for about $3.4 billion, a 54% premium to its share price. The buyer pointed to the company's products and technology and its shift from selling terminals to selling payment solutions.</p>
       </div>
       <div class="services">
         <div class="svc">
           <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M12 18h.01"></path></svg><span>Products</span></div>
           <h3>The new product family</h3>
-          <p>The Engage terminals and Carbon, the flagship tablet terminal, were the face of the portfolio the buyer was paying for, and this team designed them.</p>
+          <p>The Engage terminals and Carbon, the flagship tablet terminal, were among the products Verifone brought to market in those years, and this team designed them.</p>
         </div>
         <div class="svc">
           <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"></path><path d="m2 17 10 5 10-5"></path><path d="m2 12 10 5 10-5"></path></svg><span>Platform</span></div>
           <h3>Hardware to solutions</h3>
-          <p>A shared design language across hardware and software made a line of terminals look and behave like one platform, which was the story the company was selling.</p>
+          <p>A shared design language across hardware and software helped a line of terminals look and behave like one platform, the shift the company described when the deal was announced.</p>
         </div>
         <div class="svc">
           <div class="kind"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>Risk</span></div>
@@ -379,7 +391,7 @@
         </div>
       </div>
       <div class="verdict">
-        <p>A design team built from scratch, and within a few years its products were <span>part of a $3.4B exit.</span></p>
+        <p>Our work was part of the products and story <span>behind a $3.4B sale.</span></p>
       </div>
     </div>
   </section>
@@ -389,7 +401,7 @@
     <div class="wrap">
       <div>
         <h2>The same team, <span>at startup speed.</span></h2>
-        <p>One discipline guesses from its own corner. We cover hardware, software, and research together, now with our own AI review system and a partner checking every finding.</p>
+        <p>A US-based team that has shipped for North American and global markets. We cover hardware, software, and research together, now with our own AI review system and a partner checking every finding.</p>
       </div>
       <div class="cta">
         <a class="btn" href="/#contact">Show us what you're building <span aria-hidden="true">→</span></a>
